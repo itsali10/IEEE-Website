@@ -1,0 +1,289 @@
+.technical-team-card {
+  position: relative;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  outline: none;
+}
+
+.technical-team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.technical-card-content {
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+  min-height: 450px;
+  display: flex;
+  flex-direction: column;
+}
+
+.technical-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.technical-logo-container {
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(0, 98, 155, 0.1);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  padding: 0.5rem;
+}
+
+.technical-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 3rem;
+  max-height: 3rem;
+}
+
+.technical-emoji-logo {
+  font-size: 2.5rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.technical-badge {
+  background-color: transparent;
+  border: 1px solid;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.technical-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+  transition: color 0.3s ease;
+}
+
+.technical-card-description {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.technical-features-section {
+  margin-bottom: 1rem;
+}
+
+.technical-features-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.technical-features-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.technical-feature-tag {
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(0, 98, 155, 0.1);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 9999px;
+}
+
+.technical-button-container {
+  display: block;
+  margin-top: 1rem;
+}
+
+.technical-join-button {
+  color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+
+.technical-join-button:hover {
+  filter: brightness(0.9);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.technical-button-icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.technical-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, transparent, rgba(0, 98, 155, 0.05));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+/* Tablet responsiveness */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .technical-card-content {
+    padding: 1.5rem;
+    min-height: 380px;
+  }
+  
+  .technical-card-title {
+    font-size: 1.1rem;
+  }
+  
+  .technical-card-description {
+    font-size: 0.8rem;
+  }
+  
+  .technical-logo-container {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+  
+  .technical-logo {
+    max-width: 2.5rem;
+    max-height: 2.5rem;
+  }
+  
+  .technical-emoji-logo {
+    font-size: 2rem;
+  }
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .technical-team-card {
+    margin: 0 auto;
+    max-width: 100%;
+  }
+  
+  .technical-card-content {
+    padding: 1rem;
+    min-height: 320px;
+  }
+  
+  .technical-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  
+  .technical-logo-container {
+    width: 3rem;
+    height: 3rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .technical-logo {
+    max-width: 2rem;
+    max-height: 2rem;
+  }
+  
+  .technical-emoji-logo {
+    font-size: 1.5rem;
+  }
+  
+  .technical-badge {
+    align-self: center;
+  }
+  
+  .technical-card-title {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .technical-card-description {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+  
+  .technical-features-section {
+    margin-bottom: 0.75rem;
+  }
+  
+  .technical-features-title {
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  
+  .technical-features-container {
+    justify-content: center;
+  }
+  
+  .technical-feature-tag {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .technical-join-button {
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* Small mobile responsiveness */
+@media (max-width: 480px) {
+  .technical-card-content {
+    padding: 0.75rem;
+    min-height: 300px;
+  }
+  
+  .technical-card-title {
+    font-size: 0.9rem;
+  }
+  
+  .technical-card-description {
+    font-size: 0.75rem;
+    line-height: 1.4;
+  }
+  
+  .technical-features-container {
+    gap: 0.3rem;
+  }
+  
+  .technical-feature-tag {
+    font-size: 0.65rem;
+    padding: 0.15rem 0.4rem;
+  }
+  
+  .technical-emoji-logo {
+    font-size: 1.2rem;
+  }
+}

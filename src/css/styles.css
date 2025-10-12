@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*{
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+/* Remove focus outline from all buttons */
+button:focus,
+button:active,
+button:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Remove focus outline from all interactive elements */
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+    outline: none !important;
+}
+
+.loading-screen{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    background-color: #00629b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+
+}
+.loading-screen img{
+    width: 100%;
+}
+.loading-screen-image-container{
+    width: 200px;
+}

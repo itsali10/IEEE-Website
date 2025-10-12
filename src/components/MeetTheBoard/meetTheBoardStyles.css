@@ -1,0 +1,309 @@
+.meet-the-board{
+    padding: 0 7.5rem 7rem 7.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.meet-the-board > h1{
+    font-size: 3rem;
+    color: #00629b;
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+}
+
+.meet-the-board > h1:first-child{
+    margin-top: 0;
+}
+
+.meet-the-board .cards-container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 4rem;
+    border-radius: 14px;
+}
+
+.meet-the-board .board-cards-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 4rem;
+    border-radius: 14px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.board-member-card{
+    flex:1;
+    height: 80vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    overflow: hidden;
+    padding: 2rem 1rem;
+    margin: 0  0.2rem;
+    border-radius: 14px;
+    transition: flex 0.8s ease-in-out 0.1s , z-index 0.3s;
+}
+
+.board-member-card:hover,
+.board-member-card:active{
+    flex: 1 1 20vw;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.board-member-card:hover .board-member-overlay,
+.board-member-card:active .board-member-overlay{
+    background-color: rgba(0, 0, 0, 0);
+    transition: all ease-in-out 200ms;
+}
+
+.board-member-card img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    image-rendering:smooth;
+}
+
+.board-member-card > h1 , .board-member-card > h2{
+    z-index: 2;
+    text-align: left;
+    width: 100%;
+}
+.board-member-title{
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #00629b;
+    text-align: left;
+}
+
+.board-member-name{
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: white;
+    text-align: left;
+}
+.board-member-overlay{
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (max-width: 768px){
+    .meet-the-board{
+        padding: 0 1rem 7rem 1rem;
+    }
+    .meet-the-board > h1{
+        font-size: 2rem;
+        color: #00629b;
+        text-align: center;
+        margin-bottom: -1rem;
+    }
+    .board-member-name{
+        font-size: 0.5rem;
+    }
+    .board-member-title{
+        font-size: 0.7rem;
+    }
+    .board-member-card{
+        height: 40vh;
+        padding: 0.5rem;
+    }
+
+    /* Make board cards work with the existing global hover animation */
+    .board-cards-container.board-slider .board-member-card{
+        height: 312px;
+        padding: 2rem 1rem;
+        /* Inherit all other properties from the global .board-member-card rule */
+    }
+    
+    /* Officers section - exact same desktop animations but with reduced container size */
+    .meet-the-board .cards-container{
+        width: 100%;
+        margin: 4rem 0 0 0;
+        padding: 0;
+        box-sizing: border-box;
+        gap: 0.5rem;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        /* Reduced height to fit on one mobile screen */
+        height: 35vh;
+    }
+    
+    /* Officers section cards - exact same desktop animations */
+    .meet-the-board .cards-container .board-member-card{
+        flex: 1;
+        height: 100%;
+        margin: 0 0.2rem;
+        /* Exact same desktop animations */
+        transition: flex 0.8s ease-in-out 0.1s, z-index 0.3s;
+    }
+    
+    /* Officers section hover/active animations - exact same as desktop */
+    .meet-the-board .cards-container .board-member-card:hover,
+    .meet-the-board .cards-container .board-member-card:active {
+        flex: 1 1 20vw;
+        z-index: 2;
+        cursor: pointer;
+    }
+    
+    /* Officers section overlay animations - exact same as desktop */
+    .meet-the-board .cards-container .board-member-card:hover .board-member-overlay,
+    .meet-the-board .cards-container .board-member-card:active .board-member-overlay {
+        background-color: rgba(0, 0, 0, 0);
+        transition: all ease-in-out 200ms;
+    }
+    
+    /* Board section - horizontal slider with same animations as officers */
+    .meet-the-board .board-cards-container.board-slider{
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0 1rem;
+        justify-content: flex-start;
+        align-items: stretch;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .meet-the-board .board-cards-container.board-slider::-webkit-scrollbar{
+        display: none;
+    }
+    
+    /* Override global flex property for board cards on mobile */
+    .meet-the-board .board-cards-container.board-slider > .board-member-card {
+        flex: 0 0 100px !important;
+        min-width: 100px !important;
+        max-width: 200px !important;
+    }
+    
+    .meet-the-board .board-cards-container.board-slider .board-member-card{
+        flex: 0 0 100px !important;
+        min-width: 100px !important;
+        max-width: 200px !important;
+        margin: 0 0.1rem;
+        /* Use the same animations as desktop version with vendor prefixes */
+        -webkit-transition: all 0.8s ease-in-out 0.1s;
+        -moz-transition: all 0.8s ease-in-out 0.1s;
+        -o-transition: all 0.8s ease-in-out 0.1s;
+        transition: all 0.8s ease-in-out 0.1s;
+        /* Ensure proper touch behavior */
+        touch-action: pan-x;
+        /* Prevent text selection on touch */
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        /* Ensure cards don't interfere with scrolling */
+        position: relative;
+        /* Prevent cards from breaking out of container */
+        overflow: hidden;
+    }
+    
+    /* Board section hover/active animations - exact same as desktop */
+    .meet-the-board .board-cards-container.board-slider .board-member-card:hover,
+    .meet-the-board .board-cards-container.board-slider .board-member-card:active {
+        flex: 1 1 20vw;
+        z-index: 2;
+        cursor: pointer;
+    }
+    
+    /* Board section overlay animations - exact same as desktop */
+    .meet-the-board .board-cards-container.board-slider .board-member-card:hover .board-member-overlay,
+    .meet-the-board .board-cards-container.board-slider .board-member-card:active .board-member-overlay {
+        background-color: rgba(0, 0, 0, 0);
+        transition: all ease-in-out 200ms;
+    }
+    
+    /* Touch device support for board section */
+    .meet-the-board .board-cards-container.board-slider .board-member-card:focus {
+        flex: 1 1 20vw;
+        z-index: 2;
+        cursor: pointer;
+    }
+    
+    .meet-the-board .board-cards-container.board-slider .board-member-card:focus .board-member-overlay {
+        background-color: rgba(0, 0, 0, 0);
+        transition: all ease-in-out 200ms;
+    }
+    
+    /* Expanded state for board section on mobile - HIGHER SPECIFICITY */
+    .meet-the-board .board-cards-container.board-slider .board-member-card.expanded {
+        flex: 1 1 20vw !important;
+        z-index: 2 !important;
+        cursor: pointer !important;
+        min-width: 200px !important;
+        max-width: 300px !important;
+    }
+    
+    .meet-the-board .board-cards-container.board-slider .board-member-card.expanded .board-member-overlay {
+        background-color: rgba(0, 0, 0, 0) !important;
+        -webkit-transition: all ease-in-out 200ms !important;
+        -moz-transition: all ease-in-out 200ms !important;
+        -o-transition: all ease-in-out 200ms !important;
+        transition: all ease-in-out 200ms !important;
+    }
+    
+    /* Additional mobile-specific expanded state rule */
+    @media (max-width: 768px) {
+        .meet-the-board .board-cards-container.board-slider .board-member-card.expanded {
+            flex: 1 1 20vw !important;
+            z-index: 2 !important;
+            cursor: pointer !important;
+            min-width: 200px !important;
+            max-width: 300px !important;
+        }
+        
+        .meet-the-board .board-cards-container.board-slider .board-member-card.expanded .board-member-overlay {
+            background-color: rgba(0, 0, 0, 0) !important;
+            -webkit-transition: all ease-in-out 200ms !important;
+            -moz-transition: all ease-in-out 200ms !important;
+            -o-transition: all ease-in-out 200ms !important;
+            transition: all ease-in-out 200ms !important;
+        }
+    }
+}
+
+/* Desktop-only: Restore original hover animations for non-mobile screens */
+@media only screen and (min-width: 769px) {
+    /* Officers section hover animations */
+    .meet-the-board .cards-container .board-member-card:hover,
+    .meet-the-board .cards-container .board-member-card:active,
+    /* Board section hover animations */
+    .meet-the-board .board-cards-container .board-member-card:hover,
+    .meet-the-board .board-cards-container .board-member-card:active {
+        flex: 1 1 20vw;
+        z-index: 2;
+        cursor: pointer;
+    }
+    
+    /* Officers section overlay animations */
+    .meet-the-board .cards-container .board-member-card:hover .board-member-overlay,
+    .meet-the-board .cards-container .board-member-card:active .board-member-overlay,
+    /* Board section overlay animations */
+    .meet-the-board .board-cards-container .board-member-card:hover .board-member-overlay,
+    .meet-the-board .board-cards-container .board-member-card:active .board-member-overlay {
+        background-color: rgba(0, 0, 0, 0);
+        transition: all ease-in-out 200ms;
+    }
+}

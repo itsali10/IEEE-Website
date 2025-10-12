@@ -1,0 +1,89 @@
+.sponsors{
+    padding: 0 7.5rem 7rem 7.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.sponsors p{
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #3a3a3a;
+
+}
+.sponsors p span{
+    color: #00629b;
+}
+.logos{
+    overflow: hidden;
+    margin-top: 3rem;
+    white-space:nowrap;
+    padding: 0 7.5rem;
+    width: 100%;
+    position: relative;
+}
+.logos::before,
+.logos::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 60px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.logos::before {
+    left: 0;
+    background: linear-gradient(to right, white 0%, transparent 100%);
+  }
+  
+  .logos::after {
+    right: 0;
+    background: linear-gradient(to left, white 0%, transparent 100%);
+  }
+.logos-slider{
+    display: inline-block;
+    padding: 0;
+    margin:0;
+   animation: 15s slide infinite linear;
+   align-items: center;
+
+}
+
+.logos-slider img{
+    height: 50px;
+    margin: 0 40px;
+    
+}
+
+
+
+@keyframes slide {
+    from{
+        transform: translateX(0);
+    }
+    to{
+        transform: translateX(-100%);
+    }
+}
+
+@media only screen and (max-width: 768px){
+    .sponsors{
+        padding: 0 3rem 7rem 3rem;
+        text-align: center;
+    }
+    .sponsors p{
+        text-align: center;
+    
+    }
+    .logos-slider img{
+        height: 30px;
+        margin: 0 20px;
+        
+    }
+    .logos{
+        padding: 0 3rem;
+
+    }
+}

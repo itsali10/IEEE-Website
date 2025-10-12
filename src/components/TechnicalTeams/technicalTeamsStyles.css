@@ -1,0 +1,435 @@
+/* Technical Teams Section Styles */
+.technical-teams {
+  background-color: white;
+  padding: 5rem 0;
+}
+
+/* Remove all focus outlines in technical teams section */
+.technical-teams *:focus {
+  outline: none !important;
+}
+
+.technical-teams .max-w-7xl {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .technical-teams .max-w-7xl {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .technical-teams .max-w-7xl {
+    padding: 0 2rem;
+  }
+}
+
+.technical-teams .text-center {
+  text-align: center;
+}
+
+.technical-teams .mb-16 {
+  margin-bottom: 4rem;
+}
+
+/* Badge */
+.technical-teams .badge {
+  display: inline-block;
+  background-color: rgba(0, 98, 155, 0.1);
+  color: #00629b;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+/* Section Title */
+.technical-teams .section-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 1rem 0;
+  line-height: 2.5rem;
+}
+
+/* Section Description */
+.technical-teams .section-description {
+  font-size: 1.25rem;
+  color: #6b7280;
+  max-width: 48rem;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+/* Teams Grid */
+.technical-teams .teams-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .technical-teams .teams-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Team Card */
+.technical-teams .team-card {
+  position: relative;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+  outline: none;
+}
+
+.technical-teams .team-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.technical-teams .team-card:focus {
+  outline: none;
+}
+
+/* Card Content */
+.technical-teams .card-content {
+  padding: 1rem 1rem 0 1rem;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Card Header */
+.technical-teams .card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+/* Logo Container */
+.technical-teams .logo-container {
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(0, 98, 155, 0.1);
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+  padding: 0.5rem;
+}
+
+.technical-teams .team-card:hover .logo-container {
+  transform: scale(1.1);
+}
+
+/* Team Logo */
+.technical-teams .team-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  max-width: 3rem;
+  max-height: 3rem;
+}
+
+/* Team Badge */
+.technical-teams .team-badge {
+  background-color: transparent;
+  color: var(--team-color, #00629b);
+  border: 1px solid var(--team-color, #00629b);
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Team Title */
+.technical-teams .team-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--team-color, #00629b);
+  margin: 0 0 0.5rem 0;
+  transition: color 0.3s ease;
+}
+
+.technical-teams .team-card:hover .team-title {
+  color: var(--team-color, #004d7a);
+}
+
+/* Team Description */
+.technical-teams .team-description {
+  color: #6b7280;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+/* Team Features */
+.technical-teams .team-features {
+  margin-bottom: 0.75rem;
+}
+
+.technical-teams .features-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.technical-teams .features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.technical-teams .feature-tag {
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(0, 98, 155, 0.1);
+  color: var(--team-color, #00629b);
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 9999px;
+}
+
+/* Action Buttons */
+.technical-teams .action-buttons {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.technical-teams .join-button {
+  flex: 1;
+  background-color: var(--team-color, #00629b);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.technical-teams .join-button:hover {
+  background-color: var(--team-color, #004d7a);
+  filter: brightness(0.9);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+}
+
+.technical-teams .join-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.technical-teams .learn-more-button {
+  background-color: transparent;
+  color: var(--team-color, #00629b);
+  border: 1px solid var(--team-color, #00629b);
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.technical-teams .learn-more-button:hover {
+  background-color: rgba(0, 98, 155, 0.05);
+}
+
+.technical-teams .learn-more-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Arrow Icon */
+.technical-teams .arrow-icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.technical-teams .join-button:hover .arrow-icon {
+  transform: translateX(0.25rem);
+}
+
+/* Hover Overlay */
+.technical-teams .hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent, transparent, rgba(0, 98, 155, 0.05));
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.technical-teams .team-card:hover .hover-overlay {
+  opacity: 1;
+}
+
+/* CTA Section */
+.technical-teams .cta-section {
+  margin-top: 4rem;
+}
+
+.technical-teams .cta-content {
+  background: linear-gradient(135deg, #00629b, #0077be);
+  border-radius: 1rem;
+  padding: 2rem;
+  text-align: center;
+  color: white;
+}
+
+.technical-teams .cta-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.technical-teams .cta-description {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+  max-width: 32rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.technical-teams .cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .technical-teams .cta-buttons {
+    flex-direction: row;
+  }
+}
+
+.technical-teams .explore-button {
+  background-color: white;
+  color: #00629b;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.technical-teams .explore-button:hover {
+  background-color: #f8fafc;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.technical-teams .explore-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.technical-teams .contact-button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.technical-teams .contact-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.technical-teams .contact-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .technical-teams {
+    padding: 3rem 0;
+  }
+
+  .technical-teams .section-title {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+
+  .technical-teams .section-description {
+    font-size: 1.125rem;
+  }
+
+  .technical-teams .teams-grid {
+    gap: 1.5rem;
+  }
+
+  .technical-teams .card-content {
+    padding: 0.75rem 0.75rem 0 0.75rem;
+  }
+
+  .technical-teams .logo-container {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .technical-teams .team-logo {
+    max-width: 2.5rem;
+    max-height: 2.5rem;
+  }
+
+  .technical-teams .team-title {
+    font-size: 1.125rem;
+  }
+
+  .technical-teams .action-buttons {
+    flex-direction: column;
+  }
+
+  .technical-teams .cta-content {
+    padding: 1.5rem;
+  }
+
+  .technical-teams .cta-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .technical-teams .teams-grid {
+    grid-template-columns: 1fr;
+  }
+} 

@@ -1,0 +1,655 @@
+.what-is-ieee-text{
+    padding: 7rem 7.5rem;
+}
+.about-ieee-sb-text{
+    padding: 0rem 7.5rem 7rem 7.5rem;
+}
+.what-is-ieee-text h1,.about-ieee-sb-text h1{
+    font-size: 4rem;
+    font-weight: 800;
+    color: #00629b;
+}
+
+.what-is-ieee-text p,.about-ieee-sb-text p{
+    margin-top: 2.5rem;
+    font-size: 1.5rem;
+    color: #3a3a3a;
+}
+
+/* Our History Section */
+.our-history-section {
+    padding: 7rem 7.5rem;
+    text-align: center;
+}
+
+.our-history-section h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #00629b;
+    margin-bottom: 4rem;
+}
+
+/* Founding Section */
+.founding-section {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.founding-section h2 {
+    font-size: 3rem;
+    color: #00629b;
+    margin-bottom: 4rem;
+}
+
+.founding-cards-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    border-radius: 14px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+/* Founding section specific card styling */
+.founding-cards-container .board-member-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+}
+
+.founding-cards-container .board-member-name {
+    font-size: 1rem;
+    color: white;
+    order: 2;
+    margin: 0;
+}
+
+.founding-cards-container .board-member-title {
+    font-size: 1.2rem;
+    color: white;
+    order: 1;
+    margin: 0 0 0.5rem 0;
+}
+
+/* History Tribute Section */
+.history-tribute {
+    margin-bottom: 5rem;
+    padding: 3rem 0;
+    background: linear-gradient(135deg, rgba(0, 98, 155, 0.05) 0%, rgba(0, 98, 155, 0.02) 100%);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 98, 155, 0.1);
+}
+
+.history-tribute h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #00629b;
+    margin-bottom: 2.5rem;
+    text-align: center;
+}
+
+.tribute-content {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.tribute-intro {
+    font-size: 1.1rem;
+    color: #3a3a3a;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    font-style: italic;
+    font-weight: 500;
+}
+
+.tribute-body {
+    margin-bottom: 2rem;
+}
+
+.tribute-body p {
+    font-size: 1rem;
+    color: #3a3a3a;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+}
+
+.tribute-impact {
+    margin-bottom: 2rem;
+}
+
+.tribute-impact p {
+    font-size: 1rem;
+    color: #00629b;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+}
+
+.tribute-legacy {
+    font-size: 1.1rem;
+    color: #3a3a3a;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.tribute-thanks {
+    font-size: 1.2rem;
+    color: #00629b;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.tribute-signature {
+    font-size: 1rem;
+    color: #3a3a3a;
+    line-height: 1.4;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.history-pyramid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+}
+
+.pyramid-level {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.pyramid-level h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #00629b;
+    margin: 0;
+}
+
+.level-images {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+.history-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.history-image {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 98, 155, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+
+.history-image:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0, 98, 155, 0.25);
+}
+
+.history-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+
+.history-overlay {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.history-name-on-card {
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: white !important;
+    z-index: 2;
+    margin: 0;
+  padding: 1.25rem 1rem 0.25rem;
+    position: relative;
+}
+
+.history-title-on-card {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    z-index: 2;
+    margin: 0 0 1rem 0;
+    padding: 0 1rem 1.25rem;
+    position: relative;
+}
+
+.history-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #00629b;
+    margin: 0;
+    text-align: center;
+}
+
+/* Level 1 - Largest (Founding Officers) */
+.level-1 .history-image {
+    width: 450px;
+    height: 550px;
+}
+
+.level-1 .history-name-on-card {
+    font-size: 1.2rem;
+    color: white !important;
+}
+
+.level-1 .history-title-on-card {
+    font-size: 1.05rem;
+}
+
+/* Level 2 - Medium (Founding Heads) */
+.level-2 .history-image {
+    width: 360px;
+    height: 450px;
+}
+
+.level-2 .history-name-on-card {
+    font-size: 1rem;
+    color: white !important;
+}
+
+.level-2 .history-title-on-card {
+    font-size: 0.95rem;
+}
+
+/* Level 3 - Smallest (Founding Members) */
+.level-3 .history-image {
+    width: 280px;
+    height: 350px;
+}
+
+.level-3 .history-name-on-card {
+    font-size: 0.9rem;
+    color: white !important;
+}
+
+.level-3 .history-title-on-card {
+    font-size: 0.85rem;
+}
+
+/* Tablet breakpoint */
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+    .what-is-ieee-text{
+        padding: 6rem 5rem;
+    }
+    .about-ieee-sb-text{
+        padding: 0rem 5rem 6rem 5rem;
+    }
+    .what-is-ieee-text h1,.about-ieee-sb-text h1{
+        font-size: 3.5rem;
+    }
+    .what-is-ieee-text p,.about-ieee-sb-text p{
+        font-size: 1.3rem;
+    }
+}
+
+/* Mobile breakpoint */
+@media only screen and (max-width: 768px){
+    .what-is-ieee-text{
+        padding: 4rem 2rem;
+    }
+    .about-ieee-sb-text{
+        padding: 0rem 2rem 4rem 2rem;
+    }
+    .what-is-ieee-text h1,.about-ieee-sb-text h1{
+        font-size: 2rem;
+        font-weight: 800;
+        color: #00629b;
+        text-align: center;
+        line-height: 1.2;
+    }
+    .what-is-ieee-text p,.about-ieee-sb-text p{
+        margin-top: 2rem;
+        font-size: 1rem;
+        text-align: center;
+        color: #3a3a3a;
+        text-align: center;
+    }
+    
+    /* Mobile styles for history section */
+    .our-history-section {
+        padding: 4rem 2rem;
+    }
+    
+    .our-history-section h1 {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+    }
+    
+    /* Mobile styles for tribute section */
+    .history-tribute {
+        margin-bottom: 3rem;
+        padding: 2rem 1rem;
+        border-radius: 15px;
+    }
+    
+    .history-tribute h2 {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .tribute-content {
+        padding: 0 1rem;
+    }
+    
+    .tribute-intro {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .tribute-body p,
+    .tribute-impact p {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .tribute-legacy {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .tribute-thanks {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .tribute-signature {
+        font-size: 1rem;
+    }
+    
+    .pyramid-level h2 {
+        font-size: 1.8rem;
+    }
+    
+    .level-images {
+        gap: 1.5rem;
+    }
+    
+    .history-item {
+        gap: 0.6rem;
+    }
+    
+    /* Mobile image sizes */
+    .level-1 .history-image {
+        width: 240px;
+        height: 300px;
+    }
+    
+    .level-2 .history-image {
+        width: 200px;
+        height: 250px;
+    }
+    
+    .level-3 .history-image {
+        width: 160px;
+        height: 200px;
+    }
+    
+    .level-1 .history-name-on-card {
+        font-size: 1rem;
+        padding: 1.5rem 0.8rem;
+    }
+    
+    .level-2 .history-name-on-card {
+        font-size: 0.9rem;
+        padding: 1.2rem 0.6rem;
+    }
+    
+    .level-3 .history-name-on-card {
+        font-size: 0.8rem;
+        padding: 1rem 0.5rem;
+    }
+    
+    .history-pyramid {
+        gap: 2rem;
+    }
+    
+    /* Mobile styles for founding section */
+    .founding-section {
+        margin-top: 3rem;
+    }
+    
+    .founding-section h2 {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    /* Founding section - horizontal slider with same animations as board */
+    .founding-cards-container.founding-slider {
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        padding: 0 1rem;
+        justify-content: flex-start;
+        align-items: stretch;
+        width: 100%;
+        max-width: 100%;
+    }
+    
+    .founding-cards-container.founding-slider::-webkit-scrollbar {
+        display: none;
+    }
+    
+    /* Override global flex property for founding cards on mobile */
+    .founding-cards-container.founding-slider > .board-member-card {
+        flex: 0 0 100px !important;
+        min-width: 100px !important;
+        max-width: 200px !important;
+    }
+    
+    .founding-cards-container.founding-slider .board-member-card {
+        flex: 0 0 100px !important;
+        min-width: 100px !important;
+        max-width: 200px !important;
+        margin: 0 0.1rem;
+        /* Use the same animations as desktop version with vendor prefixes */
+        -webkit-transition: all 0.8s ease-in-out 0.1s;
+        -moz-transition: all 0.8s ease-in-out 0.1s;
+        -o-transition: all 0.8s ease-in-out 0.1s;
+        transition: all 0.8s ease-in-out 0.1s;
+        /* Ensure proper touch behavior */
+        touch-action: pan-x;
+        /* Prevent text selection on touch */
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        /* Ensure cards don't interfere with scrolling */
+        position: relative;
+        /* Prevent cards from breaking out of container */
+        overflow: hidden;
+    }
+    
+    /* Founding section hover/active animations - exact same as desktop */
+    .founding-cards-container.founding-slider .board-member-card:hover,
+    .founding-cards-container.founding-slider .board-member-card:active {
+        flex: 1 1 20vw;
+        z-index: 2;
+        cursor: pointer;
+    }
+    
+    /* Founding section overlay animations - exact same as desktop */
+    .founding-cards-container.founding-slider .board-member-card:hover .board-member-overlay,
+    .founding-cards-container.founding-slider .board-member-card:active .board-member-overlay {
+        background-color: rgba(0, 0, 0, 0);
+        transition: all ease-in-out 200ms;
+    }
+    
+    /* Touch device support for founding section */
+    .founding-cards-container.founding-slider .board-member-card:focus {
+        flex: 1 1 20vw;
+        z-index: 2;
+        cursor: pointer;
+    }
+    
+    .founding-cards-container.founding-slider .board-member-card:focus .board-member-overlay {
+        background-color: rgba(0, 0, 0, 0);
+        transition: all ease-in-out 200ms;
+    }
+    
+    /* Expanded state for founding section on mobile - HIGHER SPECIFICITY */
+    .founding-cards-container.founding-slider .board-member-card.expanded {
+        flex: 1 1 20vw !important;
+        z-index: 2 !important;
+        cursor: pointer !important;
+        min-width: 200px !important;
+        max-width: 300px !important;
+    }
+    
+    .founding-cards-container.founding-slider .board-member-card.expanded .board-member-overlay {
+        background-color: rgba(0, 0, 0, 0) !important;
+        -webkit-transition: all ease-in-out 200ms !important;
+        -moz-transition: all ease-in-out 200ms !important;
+        -o-transition: all ease-in-out 200ms !important;
+        transition: all ease-in-out 200ms !important;
+    }
+    
+    /* Mobile founding section text styling */
+    .founding-cards-container .board-member-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        padding: 1rem 0.5rem;
+    }
+    
+    .founding-cards-container .board-member-name {
+        font-size: 0.8rem;
+        color: white;
+        order: 2;
+        margin: 0;
+    }
+    
+    .founding-cards-container .board-member-title {
+        font-size: 0.9rem;
+        color: white;
+        order: 1;
+        margin: 0 0 0.3rem 0;
+    }
+}
+
+/* Small mobile breakpoint */
+@media only screen and (max-width: 480px) {
+    .what-is-ieee-text{
+        padding: 3rem 1rem;
+    }
+    .about-ieee-sb-text{
+        padding: 0rem 1rem 3rem 1rem;
+    }
+    .what-is-ieee-text h1,.about-ieee-sb-text h1{
+        font-size: 1.6rem;
+        line-height: 1.1;
+    }
+    .what-is-ieee-text p,.about-ieee-sb-text p{
+        margin-top: 1.5rem;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+    
+    /* Small mobile history section adjustments */
+    .our-history-section {
+        padding: 2rem 1rem;
+    }
+    
+    .tribute-content {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+    
+    .level-images {
+        gap: 1rem;
+    }
+    
+    .level-1 .history-image {
+        width: 180px;
+        height: 220px;
+    }
+    
+    .level-2 .history-image {
+        width: 160px;
+        height: 200px;
+    }
+    
+    .level-3 .history-image {
+        width: 140px;
+        height: 170px;
+    }
+    
+    .level-1 .history-name-on-card,
+    .level-2 .history-name-on-card,
+    .level-3 .history-name-on-card {
+        font-size: 0.75rem;
+        padding: 0.8rem 0.4rem;
+    }
+    
+    .history-pyramid {
+        gap: 1.5rem;
+    }
+}
+
+/* Desktop-only: Restore original hover animations for non-mobile screens */
+@media only screen and (min-width: 769px) {
+    /* Officers section hover animations */
+    .meet-the-board .cards-container .board-member-card:hover,
+    .meet-the-board .cards-container .board-member-card:active,
+    /* Board section hover animations */
+    .meet-the-board .board-cards-container .board-member-card:hover,
+    .meet-the-board .board-cards-container .board-member-card:active,
+    /* Founding section hover animations */
+    .founding-cards-container .board-member-card:hover,
+    .founding-cards-container .board-member-card:active {
+        flex: 1 1 20vw;
+        z-index: 2;
+        cursor: pointer;
+    }
+    
+    /* Officers section overlay animations */
+    .meet-the-board .cards-container .board-member-card:hover .board-member-overlay,
+    .meet-the-board .cards-container .board-member-card:active .board-member-overlay,
+    /* Board section overlay animations */
+    .meet-the-board .board-cards-container .board-member-card:hover .board-member-overlay,
+    .meet-the-board .board-cards-container .board-member-card:active .board-member-overlay,
+    /* Founding section overlay animations */
+    .founding-cards-container .board-member-card:hover .board-member-overlay,
+    .founding-cards-container .board-member-card:active .board-member-overlay {
+        background-color: rgba(0, 0, 0, 0);
+        transition: all ease-in-out 200ms;
+    }
+}

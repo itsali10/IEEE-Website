@@ -1,0 +1,213 @@
+.teams-container {
+  min-height: 100vh;
+}
+
+.teams-section {
+  padding: 80px 0 40px 0;
+}
+
+.teams-section.support-teams {
+  padding: 80px 0 40px 0;
+}
+
+.teams-section.technical-teams {
+  padding: 40px 0 40px 0;
+}
+
+.teams-section.affinity-groups {
+  padding: 40px 0 80px 0;
+}
+
+.teams-section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+.teams-section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.teams-section-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #00629b;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.teams-section-description {
+  font-size: 1.1rem;
+  color: #6b7280;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.teams-grid {
+  display: grid;
+  gap: 32px;
+}
+
+.teams-grid.non-technical {
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
+.teams-grid.technical {
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+}
+
+.teams-grid.affinity {
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  justify-items: center;
+}
+
+/* Ensure single affinity cards (e.g., WIE) don't span full width */
+.teams-grid.affinity .technical-team-card {
+  max-width: 600px;
+  width: 100%;
+  justify-self: center;
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {
+  .teams-section-container {
+    max-width: 1400px;
+    padding: 0 20px;
+  }
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .teams-section {
+    padding: 60px 0 30px 0;
+  }
+  
+  .teams-section.support-teams {
+    padding: 60px 0 30px 0;
+  }
+  
+  .teams-section.technical-teams {
+    padding: 30px 0 30px 0;
+  }
+  
+  .teams-section.affinity-groups {
+    padding: 30px 0 60px 0;
+  }
+  
+  .teams-section-container {
+    padding: 0 16px;
+  }
+  
+  .teams-section-title {
+    font-size: 2.2rem;
+  }
+  
+  .teams-section-description {
+    font-size: 1rem;
+  }
+  
+  .teams-grid.non-technical {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 28px;
+  }
+  
+  .teams-grid.technical,
+  .teams-grid.affinity {
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 28px;
+  }
+}
+
+/* Mobile breakpoint */
+@media (max-width: 768px) {
+  .teams-section {
+    padding: 40px 0 20px 0;
+  }
+  
+  .teams-section.support-teams {
+    padding: 40px 0 20px 0;
+  }
+  
+  .teams-section.technical-teams {
+    padding: 20px 0 20px 0;
+  }
+  
+  .teams-section.affinity-groups {
+    padding: 20px 0 40px 0;
+  }
+  
+  .teams-section-container {
+    padding: 0 12px;
+  }
+  
+  .teams-section-header {
+    margin-bottom: 40px;
+  }
+  
+  .teams-section-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .teams-section-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .teams-grid.non-technical,
+  .teams-grid.technical,
+  .teams-grid.affinity {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+/* Small mobile breakpoint */
+@media (max-width: 480px) {
+  .teams-section {
+    padding: 30px 0 15px 0;
+  }
+  
+  .teams-section.support-teams {
+    padding: 30px 0 15px 0;
+  }
+  
+  .teams-section.technical-teams {
+    padding: 15px 0 15px 0;
+  }
+  
+  .teams-section.affinity-groups {
+    padding: 15px 0 30px 0;
+  }
+  
+  .teams-section-container {
+    padding: 0 8px;
+  }
+  
+  .teams-section-header {
+    margin-bottom: 30px;
+  }
+  
+  .teams-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+  }
+  
+  .teams-section-description {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  
+  .teams-grid.non-technical,
+  .teams-grid.technical,
+  .teams-grid.affinity {
+    gap: 16px;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}

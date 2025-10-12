@@ -1,0 +1,112 @@
+.about-canvas {
+    height: 50vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+    --gradient-color-1: #00629b;  /* deep custom blue */
+    --gradient-color-2: #84caff;  /* bright sky blue */
+    --gradient-color-3: #d0f0ff;  /* soft ice blue */
+    --gradient-color-4: #a3d8ff;  /* calm light blue */
+    box-sizing: border-box !important;
+}
+
+.about-hero {
+    height: 50vh;
+    width: 100%;
+    padding: 0 7.5rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-overlay {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    width: 100%;
+    height: 50vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.about-hero h1 {
+    color: white;
+    font-size: 4rem;
+    font-weight: 800;
+    margin-top: 5%;
+    position: relative;
+    z-index: 3;
+}
+
+.mobile-joinus-window {
+    display: none;
+}
+
+/* Tablet breakpoint */
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+    .about-hero {
+        padding: 0 5rem;
+    }
+    
+    .about-hero h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Mobile breakpoint */
+@media only screen and (max-width: 768px) {
+    .about-canvas {
+        height: 40vh;
+    }
+    
+    .about-hero {
+        height: 40vh;
+        padding: 0 2rem;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    .about-overlay {
+        height: 40vh;
+    }
+    
+    .about-hero h1 {
+        font-size: 2.5rem;
+        text-align: center;
+        margin-top: 0;
+    }
+    
+    .mobile-joinus-window {
+        display: block;
+        color: #fff;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-align: center;
+        margin-top: 0.5em;
+        letter-spacing: 1px;
+        position: relative;
+        z-index: 3;
+    }
+}
+
+/* Small mobile breakpoint */
+@media only screen and (max-width: 480px) {
+    .about-hero {
+        padding: 0 1rem;
+    }
+    
+    .about-hero h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    
+    .mobile-joinus-window {
+        font-size: 1rem;
+    }
+}

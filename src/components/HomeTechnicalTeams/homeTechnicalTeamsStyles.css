@@ -1,0 +1,280 @@
+.home-tech-teams {
+  padding: 5rem 0;
+  background: #fff;
+  font-family: inherit;
+}
+
+.home-tech-teams .container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.home-tech-teams .intro {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.home-tech-teams .badge {
+  display: inline-block;
+  background: rgba(0, 98, 155, 0.1);
+  color: #00629b;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+}
+
+.home-tech-teams .title {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0.25rem 0 0.75rem;
+}
+
+.home-tech-teams .subtitle {
+  color: #4b5563;
+  font-size: 1.05rem;
+}
+
+.home-tech-teams .cards {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .home-tech-teams .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.home-tech-teams .card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.home-tech-teams .card:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+  transform: translateY(-3px) scale(1.01);
+}
+
+.home-tech-teams .card-accent {
+  height: 8px;
+}
+
+.home-tech-teams .card-body {
+  padding: 1.5rem 1.5rem 1.75rem;
+}
+
+.home-tech-teams .card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.home-tech-teams .logo-container {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-tech-teams .logo {
+  width: 2.2rem;
+  height: 2.2rem;
+  object-fit: contain;
+}
+
+.home-tech-teams .short {
+  border: 1.5px solid currentColor;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.home-tech-teams .card-title {
+  font-size: 1.25rem;
+  margin: 0.5rem 0 0.25rem;
+  font-weight: 800;
+}
+
+.home-tech-teams .card-desc {
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.home-tech-teams .features {
+  margin-top: 1rem;
+}
+
+.home-tech-teams .features-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.home-tech-teams .features-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.home-tech-teams .feature {
+  display: inline-block;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+}
+
+.home-tech-teams .actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.home-tech-teams .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 8px;
+  padding: 0.6rem 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  border: none;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.home-tech-teams .btn .arrow {
+  width: 1rem;
+  height: 1rem;
+}
+
+.home-tech-teams .btn.primary {
+  background: #00629b;
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(0, 98, 155, 0.25);
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.home-tech-teams .btn.primary:hover {
+  background: #004d7a;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 77, 122, 0.35);
+}
+
+.home-tech-teams .btn.primary:hover .arrow {
+  transform: translateX(4px);
+}
+
+.home-tech-teams .btn:focus,
+.home-tech-teams .btn:focus-visible,
+.home-tech-teams .btn.primary:focus,
+.home-tech-teams .btn.primary:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.home-tech-teams .btn.outline {
+  border: 1.5px solid #00629b;
+  color: #00629b;
+  background: transparent;
+  white-space: nowrap;
+}
+
+.home-tech-teams .btn.outline:hover {
+  background: rgba(0, 98, 155, 0.06);
+  color: #004d7a;
+  border-color: #004d7a;
+  transform: translateY(-1px);
+}
+
+.home-tech-teams .overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(135deg, rgba(0,0,0,0) 0%, rgba(0,98,155,0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.home-tech-teams .card:hover .overlay {
+  opacity: 1;
+}
+
+.home-tech-teams .cta {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.home-tech-teams .cta-box {
+  background: linear-gradient(90deg, #00629b, #0077be);
+  color: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.home-tech-teams .cta-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.home-tech-teams .cta-desc {
+  margin: 0 auto 1rem;
+  max-width: 52ch;
+  color: #e0f2ff;
+}
+
+.home-tech-teams .cta-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 640px) {
+  .home-tech-teams .cta-actions {
+    flex-direction: row;
+  }
+}
+
+.home-tech-teams .btn.light {
+  background: #fff;
+  color: #00629b;
+}
+
+.home-tech-teams .btn.light:hover {
+  background: #f0f7ff;
+}
+
+.home-tech-teams .btn.ghost {
+  border: 1.5px solid #fff;
+  background: transparent;
+  color: #fff;
+}
+
+.home-tech-teams .btn.ghost:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+

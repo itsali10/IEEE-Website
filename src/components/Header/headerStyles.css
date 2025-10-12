@@ -1,0 +1,348 @@
+/* Header Styles */
+nav {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+nav .max-w-7xl {
+  max-width: 100%;
+  margin: 0;
+  padding: 0 7.5rem; /* Match HeroWithSlope horizontal padding on desktop */
+}
+
+/* Tablet breakpoint to match HeroWithSlope */
+@media only screen and (max-width: 1024px) and (min-width: 769px) {
+  nav .max-w-7xl {
+    padding: 0 5rem;
+  }
+}
+
+/* Mobile breakpoint to match HeroWithSlope */
+@media only screen and (max-width: 768px) {
+  nav .max-w-7xl {
+    padding: 0 2rem;
+  }
+}
+
+/* Small mobile breakpoint to match HeroWithSlope */
+@media only screen and (max-width: 480px) {
+  nav .max-w-7xl {
+    padding: 0 1rem;
+  }
+}
+
+nav .flex {
+  display: flex;
+}
+
+nav .justify-between {
+  justify-content: space-between;
+}
+
+nav .items-center {
+  align-items: center;
+  gap:9px;
+}
+
+nav .h-16 {
+  height: 4rem;
+}
+
+/* Logo and Brand */
+nav .flex.items-center.space-x-4 {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+@media only screen and (max-width: 390px) {
+  nav .flex.items-center.space-x-3 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 6.75rem;
+    margin-top: 4px;
+  }
+  
+  nav .flex.items-center.space-x-2 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.75rem;
+    margin-top: 4px;
+    min-width: 204px;
+  }
+}
+
+@media only screen and (min-width: 391px) and (max-width: 430px) {
+  nav .flex.items-center.space-x-3 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 9.75rem;
+    margin-top: 4px;
+  }
+  nav .flex.items-center.space-x-2 {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.75rem;
+    margin-top: 4px;
+    min-width: 204px;
+  }
+}
+
+
+nav .w-10 {
+  width: 2.5rem;
+}
+
+nav .h-10 {
+  height: 2.5rem;
+}
+
+nav .flex.items-center.justify-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+nav .w-full {
+  width: 100%;
+}
+
+nav .h-full {
+  height: 100%;
+}
+
+nav .object-contain {
+  object-fit: contain;
+}
+
+nav .font-bold {
+  font-weight: 700;
+}
+
+nav .text-sm {
+  font-size: 1rem; /* Increased from 0.875rem */
+  line-height: 1.25rem;
+}
+
+nav .flex.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+nav .font-bold.text-gray-900 {
+  font-weight: 700;
+  color: #111827;
+  font-size: 1.125rem; /* Increased from 0.875rem */
+  line-height: 1.5rem;
+}
+
+nav .text-xs {
+  font-size: 0.875rem; /* Increased from 0.75rem */
+  line-height: 1.25rem;
+}
+
+nav .text-gray-600 {
+  color: #6b7280;
+}
+
+nav .hidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  nav .md\:flex {
+    display: flex;
+  }
+}
+
+nav .items-center.space-x-8 {
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Navigation Link Styles */
+nav .nav-link {
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem; /* Increased from 0.875rem */
+  transition: color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+nav .nav-link:hover {
+  color: #00629b;
+}
+
+nav .nav-link.active {
+  color: #00629b;
+}
+
+/* Join IEEE Button */
+nav .join-button {
+  background-color: #00629b;
+  color: white;
+  padding: 0.625rem 1.25rem; /* Increased padding */
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 1rem; /* Increased from 0.875rem */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  text-decoration: none; /* Remove underline */
+}
+
+nav .join-button:hover {
+  background-color: #004d7a;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+/* Mobile Menu Button - Hidden on Desktop */
+nav .md\:hidden {
+  display: none;
+}
+
+/* Mobile Menu Button Styling - Hidden by default */
+nav .mobile-menu-btn {
+  display: none; /* Hidden by default on desktop */
+}
+
+/* Show mobile menu button only on mobile */
+@media (max-width: 768px) {
+  nav .mobile-menu-btn {
+    display: flex; /* Show on mobile */
+    background-color: #00629b;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-items: center;
+    justify-content: center;
+  }
+
+  nav .mobile-menu-btn:hover {
+    background-color: #004d7a;
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 768px) {
+  nav .md\:hidden {
+    display: block;
+  }
+}
+
+nav .h-6 {
+  height: 1.5rem;
+}
+
+nav .w-6 {
+  width: 1.5rem;
+}
+
+/* Mobile Menu */
+nav .md\:hidden.bg-white.border-t.shadow-lg {
+  background-color: white;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+nav .px-2.pt-2.pb-3.space-y-1 {
+  padding: 0.5rem 0.75rem 0.75rem;
+}
+
+nav .space-y-1 > * + * {
+  margin-top: 0.25rem;
+}
+
+nav .px-3.py-2 {
+  padding: 0.5rem 0.75rem;
+}
+
+/* Mobile Navigation Links */
+nav .mobile-link {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  color: #374151;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 0.375rem;
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
+}
+
+nav .mobile-link:hover {
+  background-color: #f3f4f6;
+  color: #00629b;
+}
+
+nav .mobile-link.active {
+  color: #00629b;
+  background-color: rgba(0, 98, 155, 0.1);
+}
+
+/* Mobile Join Button */
+nav .join-btn {
+  width: 100%;
+  background-color: #00629b;
+  color: white;
+  padding: 0.875rem 1.25rem; /* Increased padding */
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 1rem; /* Increased from 0.875rem */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none; /* Remove underline */
+  display: block;
+  text-align: center;
+}
+
+nav .join-btn:hover {
+  background-color: #004d7a;
+  text-decoration: none; /* Ensure no underline on hover */
+}
+
+nav .animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 768px) {
+  nav .max-w-7xl {
+    padding: 0 1rem;
+  }
+  
+  nav .h-16 {
+    height: 3.5rem;
+  }
+}

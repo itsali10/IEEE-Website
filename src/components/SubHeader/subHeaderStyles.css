@@ -1,0 +1,89 @@
+.sub-header {
+    padding: 7rem 7.5rem;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 40rem; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-header p {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #3a3a3a;
+    text-align: center;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
+
+.typewriter-letter-container {
+    position: relative;
+}
+
+.typewriter-block {
+    position: absolute;
+    background-color: black;
+    z-index: 1;
+    bottom: 3px;
+    left: 1px;
+    right: 0;
+    top: 3px;
+}
+
+/* ✅ Prevent breaking inside words */
+.word-container {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* ✅ Animate each character individually */
+.typewriter-letter {
+    display: inline-block;
+}
+
+/* Typewriter cursor */
+.typewriter-cursor {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 3rem;
+    color: #00629b; /* IEEE blue color */
+    margin-left: 2px;
+}
+
+/* ✅ Optional blinking cursor (if you use it) */
+.blinking-cursor {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 3rem;
+    animation: blink 1s step-start infinite;
+    color: #3a3a3a;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .sub-header {
+        padding: 7rem 1rem;
+        height: 28rem; /* Fixed height for mobile to reserve space */
+    }
+
+    .sub-header p {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .typewriter-cursor {
+        font-size: 1.5rem;
+    }
+
+    .blinking-cursor {
+        font-size: 1.5rem;
+    }
+}

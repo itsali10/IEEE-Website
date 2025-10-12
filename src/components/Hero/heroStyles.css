@@ -1,0 +1,154 @@
+.overlay,
+#gradient-canvas,
+.home-hero-canvas {
+  pointer-events: none;
+}
+
+#gradient-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width:100%;
+  
+  --gradient-color-1: #00629b;  /* deep custom blue */
+  --gradient-color-2: #84caff;  /* bright sky blue */
+  --gradient-color-3: #d0f0ff;  /* soft ice blue */
+  --gradient-color-4: #a3d8ff;  /* calm light blue */
+  box-sizing: border-box !important;
+  z-index: -2;
+}
+.home-hero-canvas{
+    height:100%;
+}
+.sb-logo {
+    cursor: pointer;
+}
+
+.overlay{
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.hero{
+    position: relative;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    padding: 0 7.5rem;
+    box-sizing: border-box;
+}
+
+.hero h1{
+    margin-top: 0.5rem;
+    color:white;
+    font-size: 5rem;
+    font-weight: 800;
+    line-height: 5rem;
+}
+
+.hero h2{
+    margin-top: 1.5rem;
+    color:white;
+    font-size: 2.2rem;
+    font-weight: 400;
+}
+.hero-logos-flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 30%;
+}
+.hero-logos-flex .sb-logo{
+    width: 80px;
+}
+.hero-logos-flex .aast-logo{
+    width: 80px;
+}
+
+/* New Hero Button Styles */
+.hero-joinus-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  background: white;
+  color: #00629b;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.hero-joinus-btn:focus {
+  outline: none !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+
+.hero-joinus-btn:hover {
+  background: #f8fafc;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: translateY(-2px);
+}
+
+.hero-btn-icon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.hero-joinus-btn:hover .hero-btn-icon {
+  transform: translateX(4px);
+}
+
+@media only screen and (max-width: 768px) {
+  .hero-joinus-btn {
+    width: 100%;
+    font-size: 1rem;
+    padding: 0.875rem 1.5rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 768px){
+    .hero h1{
+        font-size: 3rem;
+        font-weight: 800;
+        line-height: 3rem;
+        text-align: center;
+    }
+    .hero{
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        padding: 0 3rem;
+        box-sizing: border-box;
+    }
+    .hero h2{
+        margin-top: 1.5rem;
+        color:white;
+        font-size: 2rem;
+        font-weight: 400;
+        text-align: center;
+    }
+    .hero-logos-flex{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+}
