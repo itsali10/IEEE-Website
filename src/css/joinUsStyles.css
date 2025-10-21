@@ -74,7 +74,8 @@
   flex: 1 1 220px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 0;
+  margin-bottom: 0px;
+  width: 100%;
 }
 .form-group label {
   font-weight: 600;
@@ -539,51 +540,5 @@
   
   .joinus-contact p {
     font-size: 0.85rem;
-  }
-}
-
-/* Questionnaire Recommendation Message */
-.questionnaire-recommendation-message {
-  background: linear-gradient(135deg, #e6f3ff 0%, #f0f8ff 100%);
-  border: 2px solid #00629b;
-  border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 24px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  box-shadow: 0 4px 12px rgba(0, 98, 155, 0.1);
-}
-
-.recommendation-icon {
-  font-size: 2rem;
-  flex-shrink: 0;
-}
-
-.recommendation-text {
-  color: #00629b;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-.recommendation-text strong {
-  font-weight: 700;
-}
-
-/* Mobile styles for recommendation message */
-@media (max-width: 768px) {
-  .questionnaire-recommendation-message {
-    flex-direction: column;
-    text-align: center;
-    gap: 12px;
-    padding: 16px;
-  }
-  
-  .recommendation-icon {
-    font-size: 1.5rem;
-  }
-  
-  .recommendation-text {
-    font-size: 0.9rem;
   }
 } 

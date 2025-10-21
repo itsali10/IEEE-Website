@@ -1,0 +1,155 @@
+/* AuthTopbar Styles */
+.auth-topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.auth-topbar__container {
+  margin: 0 100px;
+  padding: 0 0px; /* further reduced horizontal padding */
+  height: 52px; /* slightly shorter header */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-direction: row;
+}
+
+.auth-topbar__brand {
+  font-weight: 800;
+  color: #0a2540;
+}
+
+.auth-topbar__meta {
+  color: #6b7280;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.auth-topbar__nav {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.auth-topbar__logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.auth-topbar__button {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  background: transparent;
+  color: #1f2937;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.auth-topbar__button--active {
+  border-color: #0a84ff;
+  background: rgba(10,132,255,0.08);
+  color: #0a84ff;
+}
+
+.auth-topbar__logout {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #fca5a5;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .auth-topbar__container {
+    margin: 0 16px;
+  }
+}
+
+/* Profile Modal */
+.profile-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+}
+
+.profile-modal {
+  background: #fff;
+  width: 100%;
+  max-width: 520px;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.profile-modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.profile-modal__title {
+  margin: 0;
+  color: #0a2540;
+  font-size: 18px;
+}
+
+.profile-modal__close {
+  background: #00629b;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 8px;
+  cursor: pointer;
+}
+
+.profile-modal__content {
+  padding: 16px 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.profile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.profile-key {
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.profile-value {
+  color: #111827;
+  font-weight: 600;
+}
+
+.profile-modal__footer {
+  padding: 12px 20px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+

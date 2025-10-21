@@ -210,6 +210,52 @@ nav .join-button:hover {
   text-decoration: none; /* Ensure no underline on hover */
 }
 
+/* Logout Button */
+nav .logout-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: inherit;
+}
+
+nav .logout-button:hover {
+  background-color: #c82333;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Global Logout Button (for sidebar and other areas) */
+.logout-button {
+  background-color: #dc3545;
+  color: white;
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: inherit;
+}
+
+.logout-button:hover {
+  background-color: #c82333;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
 /* Mobile Menu Button - Hidden on Desktop */
 nav .md\:hidden {
   display: none;
@@ -322,6 +368,29 @@ nav .join-btn {
 nav .join-btn:hover {
   background-color: #004d7a;
   text-decoration: none; /* Ensure no underline on hover */
+}
+
+/* Mobile Logout Button */
+nav .logout-btn {
+  width: 100%;
+  background-color: #dc3545;
+  color: white;
+  padding: 0.875rem 1.25rem;
+  border: none;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+}
+
+nav .logout-btn:hover {
+  background-color: #c82333;
 }
 
 nav .animate-pulse {

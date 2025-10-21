@@ -200,32 +200,6 @@ const JoinUs = () => {
                 firstCommittee: location.state.selectedCommittee
             }));
         }
-        
-        // Handle pre-selection from Questionnaire page
-        const urlParams = new URLSearchParams(location.search);
-        const firstTeam = urlParams.get('firstTeam');
-        const secondTeam = urlParams.get('secondTeam');
-        
-        if (firstTeam && secondTeam) {
-            // Map questionnaire team keys to committee options
-            const questionnaireTeamMap = {
-                'Events': 'Events',
-                'Branding': 'Branding',
-                'RAS': 'Robotics and Automation Society (RAS)',
-                'CS': 'Computer Society (CS)',
-                'IES': 'Industrial Elecrtonics Society (IES)',
-                'PES': 'Power & Energy Society (PES)'
-            };
-            
-            const firstCommittee = questionnaireTeamMap[firstTeam] || firstTeam;
-            const secondCommittee = questionnaireTeamMap[secondTeam] || secondTeam;
-            
-            setFormData(prev => ({
-                ...prev,
-                firstCommittee: firstCommittee,
-                secondCommittee: secondCommittee
-            }));
-        }
     }, [location.state, location.search]);
 
     const handleChange = (e) => {
@@ -645,25 +619,6 @@ const JoinUs = () => {
                     </div>
                 </div>
                 <div className="form-row">
-                    {/* Show questionnaire recommendation message if teams are pre-selected */}
-                    {(() => {
-                        const urlParams = new URLSearchParams(location.search);
-                        const firstTeam = urlParams.get('firstTeam');
-                        const secondTeam = urlParams.get('secondTeam');
-                        
-                        if (firstTeam && secondTeam) {
-                            return (
-                                <div className="questionnaire-recommendation-message">
-                                    <div className="recommendation-icon">🎯</div>
-                                    <div className="recommendation-text">
-                                        <strong>Great news!</strong> Based on your questionnaire answers, we've pre-selected your top 2 committee matches below. You can still change them if you prefer different options.
-                                    </div>
-                                </div>
-                            );
-                        }
-                        return null;
-                    })()}
-                    
                     <div className="form-group">
                         <label htmlFor="firstCommittee">1st Desired Committee</label>
                         <select id="firstCommittee" name="firstCommittee" value={formData.firstCommittee} onChange={handleChange} required>

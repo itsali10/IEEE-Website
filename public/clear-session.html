@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clear Session - IEEE AAST</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #c82333;
+            transform: translateY(-2px);
+        }
+        .success {
+            background: #28a745;
+            padding: 15px;
+            border-radius: 8px;
+            color: white;
+            margin-top: 20px;
+            display: none;
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .info pre {
+            background: #333;
+            color: #0f0;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Clear All Sessions</h1>
+        <p>Use this page to manually clear all authentication data and fix login issues.</p>
+        
+        <button onclick="clearAllAuth()">Clear All Auth Data</button>
+        <button onclick="window.location.href='/'">Go to Home</button>
+        
+        <div id="success" class="success">
+            ✅ All authentication data cleared successfully!<br>
+            You can now return to the login page.
+        </div>
+
+        <div class="info">
+            <strong>What this does:</strong>
+            <ul style="text-align: left;">
+                <li>Clears all localStorage data</li>
+                <li>Clears all sessionStorage data</li>
+                <li>Clears all cookies</li>
+                <li>Resets Supabase session</li>
+            </ul>
+            <div id="storage-info"></div>
+        </div>
+    </div>
+
+    <script>
+        function showStorageInfo() {
+            const info = document.getElementById('storage-info');
+            let html = '<strong>Current Storage:</strong><pre>';
+            
+            // Show localStorage
+            html += 'localStorage:\n';
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                html += `  ${key}\n`;
+            }
+            
+            html += '\nsessionStorage:\n';
+            for (let i = 0; i < sessionStorage.length; i++) {
+                const key = sessionStorage.key(i);
+                html += `  ${key}\n`;
+            }
+            
+            html += '</pre>';
+            info.innerHTML = html;
+        }
+
+        function clearAllAuth() {
+            try {
+                // Clear localStorage
+                localStorage.clear();
+                
+                // Clear sessionStorage
+                sessionStorage.clear();
+                
+                // Clear cookies
+                document.cookie.split(";").forEach(function(c) { 
+                    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+                });
+                
+                // Show success
+                document.getElementById('success').style.display = 'block';
+                
+                // Update storage info
+                showStorageInfo();
+                
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    window.location.href = '/login';
+                }, 2000);
+            } catch (err) {
+                alert('Error clearing data: ' + err.message);
+            }
+        }
+
+        // Show current storage on load
+        showStorageInfo();
+    </script>
+</body>
+</html>
+
