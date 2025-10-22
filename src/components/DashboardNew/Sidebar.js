@@ -1,0 +1,188 @@
+import React from 'react';
+import LogoutIcon from '@mui/icons-material/Logout';
+import PersonIcon from '@mui/icons-material/Person';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+
+const Sidebar = ({ currentPage, onPageChange, onLogout, canAccessTaskSystem, profile }) => {
+  const navItems = [
+    { id: "profile", label: "View Profile", icon: PersonIcon, show: true },
+    { id: "assign-task", label: "Assign Task", icon: AddCircleIcon, show: canAccessTaskSystem },
+    { id: "view-assigned", label: "View Assigned Tasks", icon: CheckCircleIcon, show: true },
+    { id: "my-assigned", label: "Tasks I Assigned", icon: ListAltIcon, show: canAccessTaskSystem },
+  ];
+
+  // Format committee name
+  const formatCommitteeLabel = (raw) => {
+    const text = (raw || '').toString().trim();
+    if (!text) return 'IEEE Member';
+    return text
+      .replace(/_/g, ' ')
+      .replace(/\s+/g, ' ')
+      .split(' ')
+      .map((word) => (word ? word[0].toUpperCase() + word.slice(1).toLowerCase() : ''))
+      .join(' ');
+  };
+
+  // Get display role
+  const normalized = (value) => (value || '').toString().trim().toLowerCase();
+  const societyCommittees = new Set([
+    'computer_society',
+    'industrial_electronics_society',
+    'power_energy_society',
+    'robotics_automation_society'
+  ]);
+  const committeeKey = normalized(profile?.committee).replace(/\s+/g, '_');
+  const roleKey = normalized(profile?.role);
+  
+  // Format role with proper capitalization
+  const formatRole = (role) => {
+    if (!role) return 'Member';
+    const roleStr = String(role).trim();
+    return roleStr.charAt(0).toUpperCase() + roleStr.slice(1).toLowerCase();
+  };
+  
+  const displayRole = roleKey === 'board' && societyCommittees.has(committeeKey)
+    ? 'Chairman'
+    : formatRole(profile?.role);
+
+  const displayCommittee = formatCommitteeLabel(profile?.committee);
+  const firstName = (profile?.full_name || '').split(' ')[0] || 'Member';
+
+  const styles = {
+    sidebar: {
+      width: '256px',
+      background: '#ffffff',
+      display: 'flex',
+      flexDirection: 'column',
+      borderRight: '1px solid #e5e7eb',
+      height: '100vh',
+      position: 'sticky',
+      top: 0,
+    },
+    header: {
+      padding: '1.5rem',
+      borderBottom: '1px solid #e5e7eb',
+    },
+    greeting: {
+      fontSize: '1.25rem',
+      fontWeight: 'bold',
+      color: '#0f172a',
+      margin: 0,
+      marginBottom: '0.5rem',
+    },
+    committee: {
+      fontSize: '0.9rem',
+      color: '#00629b',
+      fontWeight: '600',
+      margin: 0,
+    },
+    role: {
+      fontSize: '0.85rem',
+      color: '#6b7280',
+      marginTop: '0.25rem',
+    },
+    nav: {
+      flex: 1,
+      padding: '1rem',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '0.5rem',
+    },
+    navButton: (isActive) => ({
+      width: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.75rem',
+      padding: '0.75rem 1rem',
+      borderRadius: '0.5rem',
+      transition: 'all 0.2s',
+      background: isActive ? '#00629b' : 'transparent',
+      color: isActive ? '#ffffff' : '#374151',
+      border: 'none',
+      cursor: 'pointer',
+      fontSize: '0.9375rem',
+      fontWeight: '500',
+      textAlign: 'left',
+    }),
+    logoutSection: {
+      padding: '1rem',
+      borderTop: '1px solid #e5e7eb',
+    },
+    logoutButton: {
+      width: '100%',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.75rem',
+      padding: '0.75rem 1rem',
+      borderRadius: '0.5rem',
+      transition: 'all 0.2s',
+      background: 'transparent',
+      color: '#374151',
+      border: 'none',
+      cursor: 'pointer',
+      fontSize: '0.9375rem',
+      fontWeight: '500',
+    },
+  };
+
+  const handleMouseEnter = (e, isActive) => {
+    if (!isActive) {
+      e.currentTarget.style.background = '#f3f4f6';
+    }
+  };
+
+  const handleMouseLeave = (e, isActive) => {
+    if (!isActive) {
+      e.currentTarget.style.background = 'transparent';
+    }
+  };
+
+  return (
+    <aside style={styles.sidebar}>
+      {/* Header */}
+      <div style={styles.header}>
+        <h1 style={styles.greeting}>Hello {firstName}!</h1>
+        <p style={styles.committee}>{displayCommittee}</p>
+        <p style={styles.role}>{displayRole}</p>
+      </div>
+
+      {/* Navigation */}
+      <nav style={styles.nav}>
+        {navItems.filter(item => item.show).map((item) => {
+          const Icon = item.icon;
+          const isActive = currentPage === item.id;
+          return (
+            <button
+              key={item.id}
+              onClick={() => onPageChange(item.id)}
+              style={styles.navButton(isActive)}
+              onMouseEnter={(e) => handleMouseEnter(e, isActive)}
+              onMouseLeave={(e) => handleMouseLeave(e, isActive)}
+            >
+              <Icon style={{ fontSize: '20px' }} />
+              <span>{item.label}</span>
+            </button>
+          );
+        })}
+      </nav>
+
+      {/* Logout Button */}
+      <div style={styles.logoutSection}>
+        <button
+          onClick={onLogout}
+          style={styles.logoutButton}
+          onMouseEnter={(e) => e.currentTarget.style.background = '#f3f4f6'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+        >
+          <LogoutIcon style={{ fontSize: '20px' }} />
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+  );
+};
+
+export default Sidebar;
+

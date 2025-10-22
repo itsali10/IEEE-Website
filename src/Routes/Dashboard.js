@@ -1,126 +1,61 @@
 import React, { useEffect, useState } from 'react';
-import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from '../context/AuthContext';
-import Profile from './Profile';
-import Tasks from './Tasks';
-import ViewTasks from './ViewTasks';
-import MyAssignedTasks from './MyAssignedTasks';
+import Sidebar from '../components/DashboardNew/Sidebar';
+import ProfileView from '../components/DashboardNew/ProfileView';
+import TaskAssignment from '../components/DashboardNew/TaskAssignment';
+import ViewAssignedTasks from '../components/DashboardNew/ViewAssignedTasks';
+import MyAssignedTasks from '../components/DashboardNew/MyAssignedTasks';
 
 const Dashboard = () => {
-  const [activeView, setActiveView] = useState(null); // 'profile' | 'tasks' | 'view-tasks' | 'my-assigned-tasks'
+  const [currentPage, setCurrentPage] = useState('profile');
   const { user, profile, isAdmin, signOut } = useAuth();
   const roleString = (profile?.role || '').toString().trim().toLowerCase();
   const canAccessTaskSystem = Boolean(isAdmin || roleString === 'officer' || roleString === 'board');
 
-  // Auto-select Profile when user logs in (but don't override once a view is chosen)
+  // Auto-select Profile when user logs in
   useEffect(() => {
-    if (user && !activeView) {
-      setActiveView('profile');
+    if (user && !currentPage) {
+      setCurrentPage('profile');
     }
-  }, [user, activeView]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
-  const navButtonStyle = (key) => ({
-    textAlign: 'left',
-    background: activeView === key ? 'rgba(0, 98, 155, 0.10)' : 'transparent',
-    color: '#00629b',
-    borderRadius: 8,
-    padding: '10px 12px',
-    fontWeight: activeView === key ? 800 : 700,
-    cursor: 'pointer',
-    border: activeView === key ? '1px solid #00629b' : '1px solid transparent',
-    textDecoration: 'none',
-    outline: 'none',
-    boxShadow: 'none'
-  });
+  const handleLogout = async () => {
+    const { error } = await signOut();
+    if (!error) {
+      window.location.href = '/';
+    }
+  };
+
+  const styles = {
+    container: {
+      display: 'flex',
+      height: '100vh',
+      background: '#f9fafb',
+    },
+    mainContent: {
+      flex: 1,
+      overflowY: 'auto',
+      background: '#f9fafb',
+      height: '100vh',
+    },
+  };
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      {/* Sidebar */}
-      <aside style={{
-        width: 240,
-        flexShrink: 0,
-        borderRight: 'none',
-        background: '#fff',
-        padding: 16,
-        display: 'flex',
-        flexDirection: 'column',
-        position: 'sticky',
-        top: 64,
-        height: 'calc(100vh - 64px)'
-      }}>
-        <div style={{ fontSize: '0.95rem', color: '#6b7280', fontWeight: 600, marginBottom: 12 }}>Dashboard</div>
-        <nav style={{ display: 'grid', gap: 8 }}>
-          {user && (
-            <button
-              onClick={() => setActiveView('profile')}
-              style={navButtonStyle('profile')}
-            >
-              View Profile
-            </button>
-          )}
+    <div style={styles.container}>
+      <Sidebar
+        currentPage={currentPage}
+        onPageChange={setCurrentPage}
+        onLogout={handleLogout}
+        canAccessTaskSystem={canAccessTaskSystem}
+        profile={profile}
+      />
 
-          {canAccessTaskSystem && (
-            <button
-              onClick={() => setActiveView('tasks')}
-              style={navButtonStyle('tasks')}
-            >
-              Assign Task
-            </button>
-          )}
-
-          {user && (
-            <button
-              onClick={() => setActiveView('view-tasks')}
-              style={navButtonStyle('view-tasks')}
-            >
-              View Assigned Tasks
-            </button>
-          )}
-
-          {canAccessTaskSystem && (
-            <button
-              onClick={() => setActiveView('my-assigned-tasks')}
-              style={navButtonStyle('my-assigned-tasks')}
-            >
-              Tasks I Assigned
-            </button>
-          )}
-        </nav>
-        {user && (
-          <button
-            onClick={async () => { const { error } = await signOut(); if (!error) window.location.href = '/'; }}
-            className="logout-button"
-            style={{
-              marginTop: 'auto',
-              width: '100%',
-              boxShadow: 'none'
-            }}
-          >
-            <LogoutIcon sx={{ fontSize: 18 }} />
-            Logout
-          </button>
-        )}
-      </aside>
-
-      {/* Content area */}
-      <main style={{ flex: 1, padding: '24px 16px', height: 'calc(100vh - 64px)', overflowY: 'auto' }}>
-        {!activeView && null}
-
-        {activeView === 'profile' && user && (
-          <Profile />
-        )}
-
-        {activeView === 'tasks' && canAccessTaskSystem && (
-          <Tasks />
-        )}
-
-        {activeView === 'view-tasks' && user && (
-          <ViewTasks />
-        )}
-
-        {activeView === 'my-assigned-tasks' && canAccessTaskSystem && (
-          <MyAssignedTasks />
-        )}
+      <main style={styles.mainContent}>
+        {currentPage === 'profile' && user && <ProfileView />}
+        {currentPage === 'assign-task' && canAccessTaskSystem && <TaskAssignment />}
+        {currentPage === 'view-assigned' && user && <ViewAssignedTasks />}
+        {currentPage === 'my-assigned' && canAccessTaskSystem && <MyAssignedTasks />}
       </main>
     </div>
   );

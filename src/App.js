@@ -83,11 +83,14 @@ function App() {
         ) : (
           <motion.div key="app" className="App">
             {/* Use AuthTopbar for protected routes instead of public Header */}
-            {['/dashboard','/tasks','/view-tasks','/profile','/my-assigned-tasks'].includes(location.pathname) ? (
-              <AuthTopbar />
-            ) : (
-              <Header />
-            )}
+            {/* Dashboard has its own integrated navigation, no header needed */}
+            {location.pathname === '/dashboard' ? null : 
+              ['/tasks','/view-tasks','/profile','/my-assigned-tasks'].includes(location.pathname) ? (
+                <AuthTopbar />
+              ) : (
+                <Header />
+              )
+            }
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
