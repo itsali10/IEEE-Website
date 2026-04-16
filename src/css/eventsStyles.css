@@ -173,6 +173,41 @@
     border: 1px solid rgba(0, 98, 155, 0.1);
 }
 
+/* Thank You Message */
+.events-thank-you {
+    text-align: center;
+    padding: 4rem 2rem;
+    margin: 3rem auto;
+    max-width: 900px;
+}
+
+.events-thank-you h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #00629b;
+    margin-bottom: 1.5rem;
+}
+
+.events-thank-you p {
+    font-size: 1.3rem;
+    color: #555;
+    line-height: 1.8;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.events-thank-you a {
+    color: #00629b;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.events-thank-you a:hover {
+    color: #1976d2;
+    text-decoration: underline;
+}
+
 .events-cards-container{
     padding: 0 7.5rem;
     display: flex;

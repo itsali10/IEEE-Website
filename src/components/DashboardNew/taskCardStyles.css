@@ -1,0 +1,52 @@
+/* Task Card Mobile Styles */
+
+@media (max-width: 768px) {
+  .task-card {
+    padding: 1rem !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .task-card .task-container {
+    gap: 0.75rem !important;
+  }
+
+  .task-card .task-content h3 {
+    font-size: 1rem !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .task-card .task-content p {
+    font-size: 0.875rem !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .task-card .task-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+  }
+
+  .task-card .task-title-section {
+    width: 100%;
+  }
+
+  .task-card .task-priority-badge {
+    font-size: 0.75rem !important;
+    padding: 0.25rem 0.5rem !important;
+  }
+
+  .task-card .task-meta-info {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    margin-top: 0.75rem !important;
+  }
+
+  .task-card .task-meta-item {
+    font-size: 0.8125rem !important;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}

@@ -3,7 +3,6 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import LogoutIcon from '@mui/icons-material/Logout';
 import ieeeLogo from "../../assets/IEEE AAST blue.png";
 import { useAuth } from '../../context/AuthContext';
 import "./headerStyles.css";
@@ -12,7 +11,7 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
-  const { user, signOut } = useAuth();
+  const { user } = useAuth();
 
   const isActive = (path) => {
     return location.pathname === path;
@@ -63,22 +62,7 @@ const Header = () => {
     setIsMenuOpen(false);
   };
 
-  const handleLogout = async () => {
-    try {
-      const { error } = await signOut();
-      if (!error) {
-        closeMenu();
-        // Force full page reload to clear all state
-        window.location.href = '/';
-      } else {
-        console.error('Logout error:', error);
-        alert('Failed to logout. Please try again.');
-      }
-    } catch (err) {
-      console.error('Unexpected logout error:', err);
-      alert('Failed to logout. Please try again.');
-    }
-  };
+  // Removed unused handleLogout to fix linter warning
 
   return (
     <nav className="bg-white/95 backdrop-blur-sm border-b sticky top-0 z-50 shadow-sm">

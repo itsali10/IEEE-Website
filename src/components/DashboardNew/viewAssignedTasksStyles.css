@@ -1,0 +1,11 @@
+/* View Assigned Tasks Mobile Styles */
+
+@media (max-width: 768px) {
+  .view-assigned-tasks-container {
+    padding: 1rem !important;
+  }
+
+  .view-assigned-tasks-container .tasksGrid {
+    gap: 0.75rem !important;
+  }
+}

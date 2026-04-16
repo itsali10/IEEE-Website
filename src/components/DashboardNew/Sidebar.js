@@ -4,14 +4,37 @@ import PersonIcon from '@mui/icons-material/Person';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ListAltIcon from '@mui/icons-material/ListAlt';
+import PeopleIcon from '@mui/icons-material/People';
+import EventIcon from '@mui/icons-material/Event';
+import RateReviewIcon from '@mui/icons-material/RateReview';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import VideoCallIcon from '@mui/icons-material/VideoCall';
 
-const Sidebar = ({ currentPage, onPageChange, onLogout, canAccessTaskSystem, profile }) => {
+const Sidebar = ({ currentPage, onPageChange, onLogout, canAccessTaskSystem, canViewProfiles, canCreateEvents, canCreateMeetings, profile, canSeeHrReviews, isBoa }) => {
   const navItems = [
-    { id: "profile", label: "View Profile", icon: PersonIcon, show: true },
-    { id: "assign-task", label: "Assign Task", icon: AddCircleIcon, show: canAccessTaskSystem },
-    { id: "view-assigned", label: "View Assigned Tasks", icon: CheckCircleIcon, show: true },
-    { id: "my-assigned", label: "Tasks I Assigned", icon: ListAltIcon, show: canAccessTaskSystem },
+    { id: "profile", label: "Member Profile", icon: PersonIcon, show: true },
+    { id: "season-calendar", label: "Calendar", icon: CalendarTodayIcon, show: true },
+    { id: "assign-task", label: "New Task", icon: AddCircleIcon, show: canAccessTaskSystem },
+    { id: "view-assigned", label: "My Tasks", icon: CheckCircleIcon, show: true },
+    { id: "my-assigned", label: "Tasks Created", icon: ListAltIcon, show: canAccessTaskSystem },
+    { id: "hr-reviews", label: "Performance Reviews", icon: RateReviewIcon, show: canSeeHrReviews },
+    { id: "create-event", label: "New Event", icon: EventIcon, show: canCreateEvents },
+    { id: "create-meeting", label: "New Meeting", icon: VideoCallIcon, show: canCreateMeetings },
+    { id: "view-profiles", label: "Member Directory", icon: PeopleIcon, show: canViewProfiles },
   ];
+
+  // Helper function to capitalize text properly (Title Case)
+  const capitalizeText = (text) => {
+    if (!text) return '';
+    const str = String(text).trim();
+    if (!str) return '';
+    // Split by spaces and capitalize each word
+    return str
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
 
   // Format committee name
   const formatCommitteeLabel = (raw) => {
@@ -43,12 +66,12 @@ const Sidebar = ({ currentPage, onPageChange, onLogout, canAccessTaskSystem, pro
     return roleStr.charAt(0).toUpperCase() + roleStr.slice(1).toLowerCase();
   };
   
-  const displayRole = roleKey === 'board' && societyCommittees.has(committeeKey)
-    ? 'Chairman'
+  const displayRole = societyCommittees.has(committeeKey) && (roleKey === 'board' || roleKey === 'vice')
+    ? (roleKey === 'board' ? 'Chairman' : 'Vice Chairman')
     : formatRole(profile?.role);
 
   const displayCommittee = formatCommitteeLabel(profile?.committee);
-  const firstName = (profile?.full_name || '').split(' ')[0] || 'Member';
+  const firstName = capitalizeText((profile?.full_name || '').split(' ')[0] || 'Member');
 
   const styles = {
     sidebar: {

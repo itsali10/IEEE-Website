@@ -29,8 +29,12 @@ M: Graduation Year
 N: Recruiter Name
 O: Has IEEE Membership
 P: IEEE Membership ID
-Q: 1st Committee
-R: 2nd Committee
+Q: Desired Committee
+R: Has Other Student Activities
+S: Other Student Activities
+T: Interview Date
+U: Interview Time
+V: Previous Work (Branding)
 ```
 
 ### 3. Create Google Apps Script
@@ -66,7 +70,11 @@ function doPost(e) {
       data.hasIEEEMembership,
       data.ieeeMembershipId,
       data.firstCommittee,
-      data.secondCommittee
+      data.hasOtherActivities,
+      data.otherActivities,
+      data.interviewDate,
+      data.interviewTime,
+      data.previousWork
     ];
     
     // Append the data to the sheet
@@ -136,7 +144,8 @@ New form submission received:
 Name: ${data.name}
 Email: ${data.email}
 Phone: ${data.phone}
-Committees: ${data.firstCommittee}, ${data.secondCommittee}
+Desired Committee: ${data.firstCommittee}
+Other Activities: ${data.hasOtherActivities === 'yes' ? data.otherActivities : 'None'}
 
 View full details in the spreadsheet.
 `;

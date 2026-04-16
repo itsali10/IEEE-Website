@@ -73,11 +73,16 @@
 }
 
 /* New Hero Button Styles */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
 .hero-joinus-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-top: 2rem;
   padding: 1rem 2rem;
   background: white;
   color: #00629b;
@@ -113,11 +118,17 @@
 }
 
 @media only screen and (max-width: 768px) {
+  .hero-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
   .hero-joinus-btn {
     width: 100%;
     font-size: 1rem;
     padding: 0.875rem 1.5rem;
-    margin-top: 1.5rem;
     text-align: center;
     justify-content: center;
   }

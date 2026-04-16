@@ -1,0 +1,64 @@
+/* Dashboard Responsive Styles */
+
+.dashboard-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.dashboard-mobile-header {
+  display: none;
+}
+
+.dashboard-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f9fafb;
+}
+
+.dashboard-sidebar-desktop {
+  display: block;
+}
+
+.dashboard-main-content {
+  flex: 1;
+  overflow-y: auto;
+  background: #f9fafb;
+  min-height: 100vh;
+}
+
+/* Mobile Styles - Tablet and below */
+@media (max-width: 768px) {
+  .dashboard-mobile-header {
+    display: block;
+  }
+
+  .dashboard-sidebar-desktop {
+    display: none;
+  }
+
+  .dashboard-container {
+    min-height: calc(100vh - 4rem); /* Subtract header height, allow content to grow */
+  }
+
+  .dashboard-main-content {
+    min-height: calc(100vh - 4rem);
+  }
+}
+
+/* Small Mobile Styles */
+@media (max-width: 480px) {
+  .dashboard-wrapper {
+    font-size: 0.9rem;
+  }
+
+  .dashboard-container {
+    min-height: calc(100vh - 4rem);
+  }
+
+  .dashboard-main-content {
+    min-height: calc(100vh - 4rem);
+    padding: 0.5rem;
+  }
+}
+

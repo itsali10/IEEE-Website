@@ -20,7 +20,6 @@ const HeroWithSlope = (props) => {
           <h1>{props.pName}</h1>
         </div>
       </div>
-      <div className='loading-screen'><img src="" alt="" /></div>
     </>
   )
 }

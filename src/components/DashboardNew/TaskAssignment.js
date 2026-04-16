@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { supabase } from '../../config/supabaseClient';
+import './taskAssignmentStyles.css';
 
-const TaskAssignment = () => {
+const TaskAssignment = ({ isBoa = false }) => {
   const { user, profile, isAdmin } = useAuth() || {};
   const hasFetchedMembers = useRef(false);
   
@@ -85,15 +86,16 @@ const TaskAssignment = () => {
         let data, error;
 
         if (userRole === 'officer') {
-          // Officers can assign to both board members and other officers
+          // Officers can assign to board members, other officers, vice, and coordinators
           const result = await supabase
             .from('student')
             .select('id, full_name, student_id, committee, role, email')
-            .or('role.ilike.board,role.ilike.officer')
+            .or('role.ilike.board,role.ilike.officer,role.ilike.vice,role.ilike.coordinator')
             .order('full_name', { ascending: true });
           data = result.data;
           error = result.error;
-        } else if (userRole === 'board' && adminCommittee) {
+        } else if ((userRole === 'board' || userRole === 'vice') && adminCommittee) {
+          // Board and Vice roles can assign to members of their own committee
           const result = await supabase
             .from('student')
             .select('id, full_name, student_id, committee, role, email')
@@ -263,11 +265,15 @@ const TaskAssignment = () => {
       try {
         const GAS_WEBHOOK_URL = process.env.REACT_APP_GAS_EMAIL_WEBHOOK_URL || '';
         if (GAS_WEBHOOK_URL) {
-          const idToEmail = new Map(
-            members
-              .filter((m) => !!m.email)
-              .map((m) => [m.id, m.email])
-          );
+          const idToEmail = new Map();
+
+          // Map emails for assignees
+          (members || []).forEach((m) => {
+            if (m.id && m.email && typeof m.email === 'string') {
+              idToEmail.set(m.id, m.email);
+            }
+          });
+
           const recipientEmails = uniqueSelectedIds
             .map(id => idToEmail.get(id))
             .filter(email => typeof email === 'string' && email.includes('@'));
@@ -316,6 +322,18 @@ const TaskAssignment = () => {
     }
 
     setIsSubmitting(false);
+  };
+
+  // Helper to display names in proper Title Case even if stored in uppercase
+  const capitalizeText = (text) => {
+    if (!text) return '';
+    const str = String(text).trim();
+    if (!str) return '';
+    return str
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
   };
 
   const styles = {
@@ -454,7 +472,7 @@ const TaskAssignment = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div style={styles.container} className="task-assignment-container">
       <h1 style={styles.title}>Assign Task</h1>
 
       <div style={styles.cardsContainer}>
@@ -470,6 +488,7 @@ const TaskAssignment = () => {
                 onChange={handleChange}
                 placeholder="Enter task title"
                 style={styles.input}
+                disabled={isBoa}
                 onFocus={(e) => e.target.style.borderColor = '#00629b'}
                 onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
                 required
@@ -487,6 +506,7 @@ const TaskAssignment = () => {
                 placeholder="Enter task description"
                 rows={4}
                 style={styles.textarea}
+                disabled={isBoa}
                 onFocus={(e) => e.target.style.borderColor = '#00629b'}
                 onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
                 required
@@ -507,6 +527,7 @@ const TaskAssignment = () => {
                   value={formData.dueDate}
                   onChange={handleChange}
                   style={styles.input}
+                  disabled={isBoa}
                   onFocus={(e) => e.target.style.borderColor = '#00629b'}
                   onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
                   required
@@ -522,6 +543,7 @@ const TaskAssignment = () => {
                   value={formData.priority}
                   onChange={handleChange}
                   style={styles.input}
+                  disabled={isBoa}
                   onFocus={(e) => e.target.style.borderColor = '#00629b'}
                   onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
                 >
@@ -543,6 +565,7 @@ const TaskAssignment = () => {
                 onChange={handleChange}
                 placeholder="https://example.com/attachment"
                 style={styles.input}
+                disabled={isBoa}
                 onFocus={(e) => e.target.style.borderColor = '#00629b'}
                 onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
               />
@@ -551,8 +574,8 @@ const TaskAssignment = () => {
             <button
               type="submit"
               style={styles.submitButton}
-              disabled={isSubmitting}
-              onMouseEnter={(e) => !isSubmitting && (e.currentTarget.style.opacity = '0.9')}
+              disabled={isSubmitting || isBoa}
+              onMouseEnter={(e) => !isSubmitting && !isBoa && (e.currentTarget.style.opacity = '0.9')}
               onMouseLeave={(e) => e.currentTarget.style.opacity = '1'}
             >
               {isSubmitting ? 'Assigning Task...' : 'Assign Task'}
@@ -582,63 +605,68 @@ const TaskAssignment = () => {
           </div>
         </form>
 
-        {/* Right Card - Member Selection */}
-        <div style={styles.card}>
-          <div style={styles.fieldContainer}>
-            <div style={styles.field}>
-              <label style={styles.label}>
-                {(profile?.role || '').toString().trim().toLowerCase() === 'officer' 
-                  ? 'Assign To Officers & Board Members' 
-                  : 'Assign To Members (Same Committee)'}
-              </label>
-              <input
-                type="text"
-                value={memberSearch}
-                onChange={(e) => setMemberSearch(e.target.value)}
-                placeholder="Search members by name, ID, or email..."
-                style={{ ...styles.input, marginBottom: '0.5rem' }}
-                onFocus={(e) => e.target.style.borderColor = '#00629b'}
-                onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
-              />
-              {membersLoading ? (
-                <div style={{ color: '#00629b' }}>Loading members...</div>
-              ) : membersError ? (
-                <div style={styles.error}>{membersError}</div>
-              ) : filteredMembers.length === 0 ? (
-                <div style={{ color: '#6b7280' }}>
+        {/* Right Column - Assignees Selection */}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          {/* Right Card - Member Selection (Assign To) */}
+          <div style={styles.card}>
+            <div style={styles.fieldContainer}>
+              <div style={styles.field}>
+                <label style={styles.label}>
                   {(profile?.role || '').toString().trim().toLowerCase() === 'officer' 
-                    ? 'No officers or board members found.' 
-                    : 'No members found in your committee.'}
-                </div>
-              ) : (
-                <div style={styles.memberGrid}>
-                  {filteredMembers.map((m) => (
-                    <label 
-                      key={m.id} 
-                      style={styles.checkboxLabel}
-                      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
-                      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={selectedMemberIds.includes(m.id)}
-                        onChange={() => toggleMember(m.id)}
-                        style={{ cursor: 'pointer', accentColor: '#00629b', marginTop: '2px' }}
-                      />
-                      <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0, flex: 1 }}>
-                        <span style={{ fontSize: '0.875rem', fontWeight: '500', color: '#0f172a', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                          {m.name}
-                        </span>
-                        {m.studentId && (
-                          <span style={{ fontSize: '0.75rem', color: '#6b7280', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-                            ID: {m.studentId}
+                    ? 'Assign To Officers & Board Members' 
+                    : 'Assign To Members (Same Committee)'}
+                </label>
+                <input
+                  type="text"
+                  value={memberSearch}
+                  onChange={(e) => setMemberSearch(e.target.value)}
+                  placeholder="Search members by name, ID, or email..."
+                  style={{ ...styles.input, marginBottom: '0.5rem' }}
+                  disabled={isBoa}
+                  onFocus={(e) => e.target.style.borderColor = '#00629b'}
+                  onBlur={(e) => e.target.style.borderColor = '#e5e7eb'}
+                />
+                {membersLoading ? (
+                  <div style={{ color: '#00629b' }}>Loading members...</div>
+                ) : membersError ? (
+                  <div style={styles.error}>{membersError}</div>
+                ) : filteredMembers.length === 0 ? (
+                  <div style={{ color: '#6b7280' }}>
+                    {(profile?.role || '').toString().trim().toLowerCase() === 'officer' 
+                      ? 'No officers or board members found.' 
+                      : 'No members found in your committee.'}
+                  </div>
+                ) : (
+                  <div style={styles.memberGrid}>
+                    {filteredMembers.map((m) => (
+                      <label 
+                        key={m.id} 
+                        style={styles.checkboxLabel}
+                        onMouseEnter={(e) => e.currentTarget.style.backgroundColor = '#f3f4f6'}
+                        onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'transparent'}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={selectedMemberIds.includes(m.id)}
+                          onChange={() => toggleMember(m.id)}
+                          disabled={isBoa}
+                          style={{ cursor: 'pointer', accentColor: '#00629b', marginTop: '2px' }}
+                        />
+                        <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0, flex: 1 }}>
+                          <span style={{ fontSize: '0.875rem', fontWeight: '500', color: '#0f172a', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            {capitalizeText(m.name)}
                           </span>
-                        )}
-                      </div>
-                    </label>
-                  ))}
-                </div>
-              )}
+                          {m.studentId && (
+                            <span style={{ fontSize: '0.75rem', color: '#6b7280', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              ID: {m.studentId}
+                            </span>
+                          )}
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

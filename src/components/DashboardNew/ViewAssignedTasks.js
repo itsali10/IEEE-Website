@@ -3,11 +3,12 @@ import { useAuth } from '../../context/AuthContext';
 import { supabase, isSupabaseConfigured } from '../../config/supabaseClient';
 import SearchIcon from '@mui/icons-material/Search';
 import TaskCard from './TaskCard';
+import './viewAssignedTasksStyles.css';
 
-const ViewAssignedTasks = () => {
+const ViewAssignedTasks = ({ isBoa = false }) => {
   const { user, profile, loading } = useAuth();
   const [tasks, setTasks] = useState([]);
-  const [assigneesMap, setAssigneesMap] = useState(new Map());
+  // Removed unused assignees map to fix linter warning
   const [searchTerm, setSearchTerm] = useState('');
   const [filterPriority, setFilterPriority] = useState('all');
   const [completedTasks, setCompletedTasks] = useState(new Set());
@@ -29,10 +30,10 @@ const ViewAssignedTasks = () => {
       setIsLoading(true);
       setError('');
       try {
-        // Fetch task ids assigned to this student
+        // Fetch task ids and per-student completion status for this student
         const { data: assignees, error: assigneesError } = await supabase
           .from('task_assignees')
-          .select('task_id')
+          .select('task_id, is_completed')
           .eq('student_id', profileId);
 
         if (assigneesError) throw assigneesError;
@@ -65,47 +66,30 @@ const ViewAssignedTasks = () => {
           }
         }
 
-        // Enrich tasks with creator name
+        // Map task_id -> per-student completed flag
+        const completionMap = new Map(
+          (assignees || []).map(a => [a.task_id, Boolean(a.is_completed)])
+        );
+
+        // Enrich tasks with creator name and per-student completion
         const enrichedTasks = (tasksRows || []).map(t => ({
           ...t,
           assigned_by_name: creatorMap.get(t.created_by) || 'Unknown',
+          student_completed: completionMap.get(t.id) || false,
         }));
 
         if (!cancelled) {
           setTasks(enrichedTasks);
-          // Set initial completed state
-          const completed = new Set(enrichedTasks.filter(t => t.completed).map(t => t.id));
+          // Set initial completed state from task_assignees.completed for this student
+          const completed = new Set(
+            (assignees || [])
+              .filter(a => a.is_completed)
+              .map(a => a.task_id)
+          );
           setCompletedTasks(completed);
         }
 
-        // Fetch assignees names for filtering
-        try {
-          const { data: assigneeLinks, error: linksErr } = await supabase
-            .from('task_assignees')
-            .select('task_id, student_id')
-            .in('task_id', taskIds);
-          if (linksErr) throw linksErr;
-
-          const studentIds = Array.from(new Set((assigneeLinks || []).map(r => r.student_id).filter(Boolean)));
-          let idToName = new Map();
-          if (studentIds.length > 0) {
-            const { data: students, error: stuErr } = await supabase
-              .from('student')
-              .select('id, full_name')
-              .in('id', studentIds);
-            if (stuErr) throw stuErr;
-            idToName = new Map((students || []).map(s => [s.id, s.full_name || 'Unknown']));
-          }
-          const map = new Map();
-          (assigneeLinks || []).forEach(link => {
-            const list = map.get(link.task_id) || [];
-            list.push({ id: link.student_id, name: idToName.get(link.student_id) || 'Unknown' });
-            map.set(link.task_id, list);
-          });
-          if (!cancelled) setAssigneesMap(map);
-        } catch (_) {
-          if (!cancelled) setAssigneesMap(new Map());
-        }
+        // Removed assignee names prefetch as it was unused in UI
       } catch (err) {
         if (!cancelled) {
           setError(err.message || 'Failed to load tasks');
@@ -128,10 +112,12 @@ const ViewAssignedTasks = () => {
 
     setCompletingTasks(prev => new Set([...prev, taskId]));
     try {
+      // Update per-student completion status in task_assignees
       const { error } = await supabase
-        .from('task')
-        .update({ completed: newCompleted })
-        .eq('id', taskId);
+        .from('task_assignees')
+        .update({ is_completed: newCompleted })
+        .eq('task_id', taskId)
+        .eq('student_id', profileId);
       if (error) throw error;
 
       // Update local state
@@ -242,7 +228,7 @@ const ViewAssignedTasks = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="view-assigned-tasks-container" style={styles.container}>
       <h1 style={styles.title}>View Assigned Tasks</h1>
 
       {/* Search and Filter */}
@@ -289,7 +275,7 @@ const ViewAssignedTasks = () => {
               key={task.id}
               task={task}
               isCompleted={completedTasks.has(task.id)}
-              onToggleCompletion={() => toggleTaskCompletion(task.id)}
+              onToggleCompletion={isBoa ? null : () => toggleTaskCompletion(task.id)}
               showAssignedBy
             />
           ))}

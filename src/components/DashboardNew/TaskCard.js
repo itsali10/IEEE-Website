@@ -3,6 +3,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import RadioButtonUncheckedIcon from '@mui/icons-material/RadioButtonUnchecked';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import ErrorOutlineIcon from '@mui/icons-material/ErrorOutline';
+import './taskCardStyles.css';
 
 const TaskCard = ({
   task,
@@ -129,8 +130,8 @@ const TaskCard = ({
   };
 
   return (
-    <div style={styles.card}>
-      <div style={styles.container}>
+    <div className="task-card" style={styles.card}>
+      <div className="task-container" style={styles.container}>
         {/* Checkbox */}
         {onToggleCompletion && (
           <button
@@ -148,36 +149,48 @@ const TaskCard = ({
         )}
 
         {/* Content */}
-        <div style={styles.content}>
-          <div style={styles.header}>
-            <div style={styles.titleSection}>
+        <div className="task-content" style={styles.content}>
+          <div className="task-header" style={styles.header}>
+            <div className="task-title-section" style={styles.titleSection}>
               <h3 style={styles.title}>{task.title}</h3>
               <p style={styles.description}>{task.description}</p>
             </div>
 
             {/* Priority Badge */}
-            <span style={styles.priorityBadge}>
+            <span className="task-priority-badge" style={styles.priorityBadge}>
               {getPriorityLabel(task.priority)}
             </span>
           </div>
 
           {/* Meta Information */}
-          <div style={styles.metaInfo}>
-            <div style={styles.metaItem}>
+          <div className="task-meta-info" style={styles.metaInfo}>
+            <div className="task-meta-item" style={styles.metaItem}>
               <AccessTimeIcon style={{ fontSize: '16px' }} />
               <span>{formatDate(task.due_date)}</span>
               {isOverdue && <ErrorOutlineIcon style={{ fontSize: '16px', color: '#dc2626' }} />}
             </div>
 
             {showAssignedBy && task.assigned_by_name && (
-              <div style={styles.metaItem}>
+              <div className="task-meta-item" style={styles.metaItem}>
                 <span style={styles.metaLabel}>Assigned by:</span>
                 <span style={styles.metaValue}>{task.assigned_by_name}</span>
               </div>
             )}
 
             {showAssignedTo && task.assigned_to_names && (
-              <div style={styles.metaItem}>
+              <div
+                className="task-meta-item"
+                style={{
+                  ...styles.metaItem,
+                  ...(isCompleted
+                    ? {
+                        borderTop: '1px solid #e5e7eb',
+                        paddingTop: '0.35rem',
+                        marginTop: '0.15rem',
+                      }
+                    : {}),
+                }}
+              >
                 <span style={styles.metaLabel}>Assigned to:</span>
                 <span style={styles.metaValue}>{task.assigned_to_names}</span>
               </div>

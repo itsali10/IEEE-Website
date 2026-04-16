@@ -1,0 +1,62 @@
+/* Task Assignment Mobile Responsive Styles */
+
+/* Override grid layout for mobile */
+@media (max-width: 768px) {
+  /* Target the cards container */
+  .task-assignment-container > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Reduce padding on mobile */
+  .task-assignment-container {
+    padding: 1rem !important;
+  }
+
+  /* Title adjustments */
+  .task-assignment-container > h1 {
+    font-size: 1.75rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+
+  /* Card padding adjustments */
+  .task-assignment-container form,
+  .task-assignment-container > div > div {
+    padding: 1.5rem !important;
+  }
+
+  /* Make the two-column grid inside forms single column */
+  .task-assignment-container div[style*="grid-template-columns: repeat(2, 1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Adjust member grid for mobile */
+  .task-assignment-container div[style*="grid-template-columns: repeat(2, minmax(0, 1fr))"] {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further reduce padding on small mobile */
+  .task-assignment-container {
+    padding: 0.75rem !important;
+  }
+
+  /* Smaller title on small screens */
+  .task-assignment-container > h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  /* Reduce card padding */
+  .task-assignment-container form,
+  .task-assignment-container > div > div {
+    padding: 1rem !important;
+  }
+
+  /* Smaller gaps */
+  .task-assignment-container > div[style*="grid-template-columns"] {
+    gap: 1rem !important;
+  }
+}
+

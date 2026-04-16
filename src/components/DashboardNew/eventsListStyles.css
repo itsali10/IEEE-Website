@@ -1,0 +1,25 @@
+/* Events List Mobile Styles */
+
+@media (max-width: 768px) {
+  .events-list-container {
+    padding: 1rem !important;
+  }
+
+  .events-list-container h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .events-list-container .eventsGrid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .events-list-container .eventCard {
+    padding: 1.5rem !important;
+  }
+
+  .events-list-container .searchInputContainer {
+    max-width: 100% !important;
+  }
+}

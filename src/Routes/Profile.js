@@ -31,8 +31,8 @@ const Profile = () => {
   ]);
   const committeeKey = normalized(profile?.committee).replace(/\s+/g, '_');
   const roleKey = normalized(profile?.role);
-  const displayRole = roleKey === 'board' && societyCommittees.has(committeeKey)
-    ? 'Chairman'
+  const displayRole = societyCommittees.has(committeeKey) && (roleKey === 'board' || roleKey === 'vice')
+    ? (roleKey === 'board' ? 'Chairman' : 'Vice Chairman')
     : (profile?.role ? String(profile.role) : 'Member');
 
   const dobValue = profile?.date_of_birth || profile?.dob || profile?.birthdate || profile?.birth_date;
@@ -65,6 +65,7 @@ const Profile = () => {
         <div>
           <div style={rowStyle}><span style={keyStyle}>Full Name</span><span style={valStyle}>{profile?.full_name || '—'}</span></div>
           <div style={rowStyle}><span style={keyStyle}>Email</span><span style={valStyle}>{profile?.email || user?.email || '—'}</span></div>
+          <div style={rowStyle}><span style={keyStyle}>Phone Number</span><span style={valStyle}>{profile?.phone_number || '—'}</span></div>
           <div style={rowStyle}><span style={keyStyle}>Student ID</span><span style={valStyle}>{profile?.student_id || '—'}</span></div>
           <div style={rowStyle}><span style={keyStyle}>Committee</span><span style={valStyle}>{displayCommittee}</span></div>
           <div style={rowStyle}><span style={keyStyle}>Role</span><span style={valStyle}>{displayRole}</span></div>

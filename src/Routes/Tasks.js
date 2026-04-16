@@ -65,7 +65,8 @@ const Tasks = () => {
             console.error('[Tasks] Error reading committee:', err);
             setAdminCommittee('');
         }
-    }, [profile, adminCommittee]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [profile]);
 
     // Fetch assignable users based on logged-in user's role
     useEffect(() => {
@@ -101,17 +102,17 @@ const Tasks = () => {
                 let data, error;
 
                 if (userRole === 'officer') {
-                    // Officer: fetch all board members (global)
-                    console.log('[Tasks] 📡 Fetching all BOARD members (officer view)');
+                    // Officer: fetch all board members, officers, vice, and coordinators (global)
+                    console.log('[Tasks] 📡 Fetching all BOARD members, officers, vice, and coordinators (officer view)');
                     const result = await supabase
                         .from('student')
                         .select('id, full_name, student_id, committee, role, email')
-                        .ilike('role', 'board')
+                        .or('role.ilike.board,role.ilike.officer,role.ilike.vice,role.ilike.coordinator')
                         .order('full_name', { ascending: true });
                     data = result.data;
                     error = result.error;
-                } else if (userRole === 'board' && adminCommittee) {
-                    // Board: fetch members from same committee
+                } else if ((userRole === 'board' || userRole === 'vice') && adminCommittee) {
+                    // Board/Vice: fetch members from same committee
                     console.log('[Tasks] 📡 Fetching MEMBERS from committee:', adminCommittee);
                     const result = await supabase
                         .from('student')

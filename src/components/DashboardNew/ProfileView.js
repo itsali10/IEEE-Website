@@ -57,6 +57,19 @@ const ProfileView = () => {
     );
   }
 
+  // Helper function to capitalize text properly (Title Case)
+  const capitalizeText = (text) => {
+    if (!text) return '';
+    const str = String(text).trim();
+    if (!str) return '';
+    // Split by spaces and capitalize each word
+    return str
+      .toLowerCase()
+      .split(' ')
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  };
+
   const normalized = (value) => (value || '').toString().trim().toLowerCase();
   
   const formatCommitteeLabel = (raw) => {
@@ -79,9 +92,17 @@ const ProfileView = () => {
 
   const committeeKey = normalized(profile?.committee).replace(/\s+/g, '_');
   const roleKey = normalized(profile?.role);
-  const displayRole = roleKey === 'board' && societyCommittees.has(committeeKey)
-    ? 'Chairman'
-    : (profile?.role ? String(profile.role) : 'Member');
+  
+  // Format role with proper capitalization (same as Sidebar and DashboardHeader)
+  const formatRole = (role) => {
+    if (!role) return 'Member';
+    const roleStr = String(role).trim();
+    return roleStr.charAt(0).toUpperCase() + roleStr.slice(1).toLowerCase();
+  };
+  
+  const displayRole = societyCommittees.has(committeeKey) && (roleKey === 'board' || roleKey === 'vice')
+    ? (roleKey === 'board' ? 'Chairman' : 'Vice Chairman')
+    : formatRole(profile?.role);
 
   const dobValue = profile?.date_of_birth || profile?.dob || profile?.birthdate || profile?.birth_date;
   
@@ -113,13 +134,18 @@ const ProfileView = () => {
           <div style={styles.fieldContainer}>
             <div style={styles.field}>
               <label style={styles.label}>Full Name</label>
-              <p style={styles.value}>{profile?.full_name || '—'}</p>
+              <p style={styles.value}>{capitalizeText(profile?.full_name) || '—'}</p>
             </div>
 
             <div style={styles.field}>
               <label style={styles.label}>Email</label>
               <p style={styles.value}>{profile?.email || user?.email || '—'}</p>
             </div>
+
+          <div style={styles.field}>
+            <label style={styles.label}>Phone Number</label>
+            <p style={styles.value}>{profile?.phone_number || '—'}</p>
+          </div>
 
             <div style={styles.field}>
               <label style={styles.label}>Student ID</label>

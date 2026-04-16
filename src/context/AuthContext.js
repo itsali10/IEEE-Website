@@ -36,10 +36,11 @@ export const AuthProvider = ({ children }) => {
       
       let data, error;
       try {
+        // Use ilike for case-insensitive email matching since emails are stored in uppercase
         const result = await supabase
           .from('student')
           .select('*')
-          .eq('email', email)
+          .ilike('email', email)
           .limit(1)
           .maybeSingle();
         data = result.data;
@@ -100,12 +101,10 @@ export const AuthProvider = ({ children }) => {
           console.log('[Auth] Profile:', p);
           console.log('[Auth] Profile role:', p?.role);
           setProfile(p);
-          const admin = Boolean(
-            p && 
-            p.role && 
-            typeof p.role === 'string' && 
-            (p.role.trim().toLowerCase() === 'officer' || p.role.trim().toLowerCase() === 'board')
-          );
+          const roleStr = p && typeof p.role === 'string' 
+            ? p.role.trim().toLowerCase() 
+            : '';
+          const admin = roleStr === 'officer' || roleStr === 'board' || roleStr === 'vice';
           console.log('[Auth] Has elevated access:', admin, '(role was:', p?.role, ')');
           setIsAdmin(admin);
         } else {
@@ -178,12 +177,10 @@ export const AuthProvider = ({ children }) => {
       const p = await fetchProfile(email);
       console.log('[Auth] Login - fetched profile:', p);
       console.log('[Auth] Login - profile role:', p?.role);
-      const admin = Boolean(
-        p && 
-        p.role && 
-        typeof p.role === 'string' && 
-        (p.role.trim().toLowerCase() === 'officer' || p.role.trim().toLowerCase() === 'board')
-      );
+      const roleStr = p && typeof p.role === 'string' 
+        ? p.role.trim().toLowerCase() 
+        : '';
+      const admin = roleStr === 'officer' || roleStr === 'board' || roleStr === 'vice';
       console.log('[Auth] Login - has elevated access:', admin, '(role was:', p?.role, ')');
       // Set state for any authenticated user
       setProfile(p);

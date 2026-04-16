@@ -3,8 +3,9 @@ import { useAuth } from '../../context/AuthContext';
 import { supabase, isSupabaseConfigured } from '../../config/supabaseClient';
 import SearchIcon from '@mui/icons-material/Search';
 import TaskCard from './TaskCard';
+import './myAssignedTasksStyles.css';
 
-const MyAssignedTasks = () => {
+const MyAssignedTasks = ({ isBoa = false }) => {
   const { user, loading } = useAuth();
   const [tasks, setTasks] = useState([]);
   const [assigneesMap, setAssigneesMap] = useState(new Map());
@@ -174,7 +175,7 @@ const MyAssignedTasks = () => {
   };
 
   return (
-    <div style={styles.container}>
+    <div className="my-assigned-tasks-container" style={styles.container}>
       <h1 style={styles.title}>Tasks I Assigned</h1>
 
       {/* Search and Filter */}
@@ -220,7 +221,7 @@ const MyAssignedTasks = () => {
             <TaskCard
               key={task.id}
               task={task}
-              isCompleted={false}
+            isCompleted={!!task.completed}
               onToggleCompletion={null}
               showAssignedTo
             />

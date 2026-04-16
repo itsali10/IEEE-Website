@@ -1,0 +1,249 @@
+/* Dashboard Header Styles */
+
+.dashboard-header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-header-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.dashboard-header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+}
+
+.dashboard-header-user-section {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: 0.75rem;
+}
+
+.dashboard-header-logo {
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dashboard-header-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.dashboard-header-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dashboard-header-name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.dashboard-header-details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dashboard-header-committee {
+  font-size: 0.875rem;
+  color: #00629b;
+  font-weight: 600;
+}
+
+.dashboard-header-bullet {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 600;
+}
+
+.dashboard-header-role {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+.dashboard-mobile-menu-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  color: #374151;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dashboard-mobile-menu-btn:hover {
+  color: #00629b;
+}
+
+/* Mobile Menu */
+.dashboard-mobile-menu {
+  display: none;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-mobile-menu-content {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.dashboard-mobile-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.dashboard-mobile-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #374151;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-align: left;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.dashboard-mobile-nav-item:hover {
+  background: #f3f4f6;
+}
+
+.dashboard-mobile-nav-item.active {
+  background: #00629b;
+  color: #ffffff;
+}
+
+.dashboard-mobile-logout {
+  padding: 0.5rem 0 0 0;
+  margin-top: 0.5rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.dashboard-mobile-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-radius: 0.5rem;
+  background: transparent;
+  color: #dc2626;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-align: left;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.dashboard-mobile-logout-btn:hover {
+  background: #fef2f2;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .dashboard-mobile-menu {
+    display: block;
+  }
+
+  .dashboard-header-container {
+    padding: 0 0.75rem;
+  }
+
+  .dashboard-header-name {
+    font-size: 1rem;
+  }
+
+  .dashboard-header-details {
+    gap: 0.4rem;
+  }
+
+  .dashboard-header-committee {
+    font-size: 0.8rem;
+  }
+
+  .dashboard-header-bullet {
+    font-size: 0.8rem;
+  }
+
+  .dashboard-header-role {
+    font-size: 0.8rem;
+  }
+
+  .dashboard-header-logo {
+    width: 2rem;
+    height: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header-container {
+    padding: 0 0.5rem;
+  }
+
+  .dashboard-header-name {
+    font-size: 0.95rem;
+  }
+
+  .dashboard-header-details {
+    gap: 0.35rem;
+  }
+
+  .dashboard-header-committee {
+    font-size: 0.75rem;
+  }
+
+  .dashboard-header-bullet {
+    font-size: 0.75rem;
+  }
+
+  .dashboard-header-role {
+    font-size: 0.75rem;
+  }
+
+  .dashboard-header-logo {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+
+  .dashboard-mobile-nav-item {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.875rem;
+  }
+
+  .dashboard-mobile-logout-btn {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.875rem;
+  }
+}
+

@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Routes/Home";
 import About from "./Routes/About";
 import Events from "./Routes/Events";
-import JoinUs from "./Routes/JoinUs";
 import Teams from "./Routes/Teams";
 import Tasks from "./Routes/Tasks";
 import ViewTasks from "./Routes/ViewTasks";
@@ -13,6 +12,8 @@ import Dashboard from "./Routes/Dashboard";
 import Profile from "./Routes/Profile";
 import MyAssignedTasks from "./Routes/MyAssignedTasks";
 import Login from "./Routes/Login";
+import Signup from "./Routes/Signup";
+import Forms from "./Routes/Forms";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 
@@ -95,9 +96,11 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
               <Route path="/events" element={<Events />} />
-              <Route path="/joinus" element={<JoinUs />} />
+              {/* <Route path="/joinus" element={<JoinUs />} /> */}
               <Route path="/teams" element={<Teams />} /> 
+              <Route path="/forms" element={<Forms />} />
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
               <Route 
                 path="/dashboard" 
                 element={

@@ -14,6 +14,13 @@ import reepe3 from "../assets/reepe3.JPG"
 import reepe4 from "../assets/reepe4.JPG"
 import reepe5 from "../assets/reepe5.JPG"
 import reepe6 from "../assets/reepe6.JPG"
+import reepe2026_1 from "../assets/reepe2026-1.jpeg"
+import reepe2026_2 from "../assets/reepe2026-2.jpeg"
+import reepe2026_3 from "../assets/reepe2026-3.jpeg"
+import reepe2026_4 from "../assets/reepe2026-4.jpeg"
+import reepe2026_5 from "../assets/reepe2026-5.jpeg"
+import reepe2026_6 from "../assets/reepe2026-6.jpeg"
+import reepe2026_7 from "../assets/reepe2026-7.jpeg"
 import ramadan1 from "../assets/ramadan1.jpg"
 import camp1 from "../assets/camp1.jpg"
 import camp2 from "../assets/camp2.jpg"
@@ -90,6 +97,15 @@ import egg12 from "../assets/egg12.jpg"
 import { motion , useScroll } from 'framer-motion'
 
 const eventsData = [
+    {
+        eventName: "REEPE",
+        eventDesc: "The 8th International Youth Conference on Radio Electronics, Electrical and Power Engineering (IEEE REEPE 2026) was proudly hosted at our university AASTMT Cairo as the official venue for Cairo, held in parallel with Moscow Power Engineering Institute (MPEI) and the American University of Sharjah (AUS), bringing together a diverse community of students, researchers, and industry professionals.\n\nThroughout the conference, participants showcased their papers through presentations covering the latest advancements in electrical engineering, power systems, and radio electronics. The event provided a valuable platform for knowledge exchange, collaboration, and the exchange of innovative ideas.\n\nAs a hosting branch, we were honored to contribute to the success of this international conference and to represent our community on a global academic stage.",
+        images: [reepe2026_1, reepe2026_2, reepe2026_3, reepe2026_4, reepe2026_5, reepe2026_6, reepe2026_7],
+        season: "Event",
+        eventDate: "1-04-2026",
+        eventLocation: "AASTMT Cairo",
+        year: 2026
+    },
     {
         eventName: "Ventus",
         eventDesc: "Participants had the opportunity to engage in a hands-on demo session of the GWO BTT Electrical module, fully experienced through virtual reality at the AAST Engineering Building.Hosted by Ventus Academy, the session brought global-standard wind energy training to Egypt and the MENA region, offering a cutting-edge introduction to the world of renewable energy and electrical systems.",
@@ -263,7 +279,7 @@ const years = [
 const eventTypes = ["All", "Event", "Session", "Other"];
 
 const Events = () => {
-    const [selectedYear, setSelectedYear] = useState(2025);
+    const [selectedYear, setSelectedYear] = useState(2026);
     const [selectedType, setSelectedType] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
     const container = useRef(null);
@@ -358,8 +374,14 @@ const Events = () => {
                 )}
             </motion.div>
             
+            {/* Thank You Message */}
+            <div className="events-thank-you">
+                <h2>Thank You AAST</h2>
+                <p>We are grateful for the continuous support from the <a href="https://aast.edu/en/" target="_blank" rel="noopener noreferrer">Arab Academy for Science, Technology and Maritime Transport</a> in making our events and initiatives possible.</p>
+            </div>
+            
             {/* Spacing after events */}
-            <div style={{ height: '25vh', background: 'transparent' }}></div>
+            <div style={{ height: '10vh', background: 'transparent' }}></div>
         </div>
     )
 }

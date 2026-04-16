@@ -37,7 +37,9 @@ const AuthTopbar = () => {
   const committeeKey = normalized(profile?.committee).replace(/\s+/g, '_');
   const roleKey = normalized(profile?.role);
   const roleLabelRaw = profile?.role ? String(profile.role) : 'Member';
-  const displayRole = roleKey === 'board' && societyCommittees.has(committeeKey) ? 'Chairman' : roleLabelRaw;
+  const displayRole = societyCommittees.has(committeeKey) && (roleKey === 'board' || roleKey === 'vice')
+    ? (roleKey === 'board' ? 'Chairman' : 'Vice Chairman')
+    : roleLabelRaw;
   const committeeLabel = formatCommitteeLabel(profile?.committee);
   const metaLabel = committeeLabel && displayRole ? `${committeeLabel} • ${displayRole}` : (committeeLabel || displayRole);
 

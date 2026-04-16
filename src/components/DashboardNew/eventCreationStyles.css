@@ -1,0 +1,21 @@
+/* Event Creation Mobile Styles */
+
+@media (max-width: 768px) {
+  .event-creation-container {
+    padding: 1rem !important;
+  }
+
+  .event-creation-container h1 {
+    font-size: 1.5rem !important;
+    margin-bottom: 1rem !important;
+  }
+
+  .event-creation-container form {
+    padding: 1rem !important;
+  }
+
+  .event-creation-container form > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}

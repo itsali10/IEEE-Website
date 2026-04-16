@@ -18,6 +18,7 @@ const Login = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loginError, setLoginError] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [isLoggingOut, setIsLoggingOut] = useState(false);
 
@@ -35,6 +36,17 @@ const Login = () => {
       window.location.href = '/';
     }
   };
+
+  // Check for success message from signup
+  useEffect(() => {
+    if (location.state?.message) {
+      setSuccessMessage(location.state.message);
+      // Clear the message after 5 seconds
+      setTimeout(() => setSuccessMessage(''), 5000);
+      // Clear location state to prevent message from showing again on refresh
+      window.history.replaceState({}, document.title);
+    }
+  }, [location.state]);
 
   // Redirect if already logged in (any role)
   useEffect(() => {
@@ -106,7 +118,7 @@ const Login = () => {
           
           // Handle different error types
           if (error.message.includes('Access denied')) {
-            setLoginError('Access denied. Only Officers and Board members can access this system.');
+            setLoginError('Access denied. Only Officers, Board, and Vice members can access this system.');
           } else if (error.message.includes('Invalid login credentials')) {
             setLoginError('Invalid email or password. Please try again.');
           } else if (error.message.includes('Email not confirmed')) {
@@ -213,6 +225,13 @@ const Login = () => {
                     See <code>SUPABASE_SETUP.md</code> for instructions.
                   </p>
                 </div>
+              </div>
+            )}
+
+            {successMessage && (
+              <div className="login-success-banner">
+                <span className="success-icon">✅</span>
+                <span>{successMessage}</span>
               </div>
             )}
 

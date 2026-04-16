@@ -1,0 +1,79 @@
+/* View Profiles Mobile Styles */
+
+@media (max-width: 768px) {
+  .view-profiles-container {
+    padding: 1rem !important;
+  }
+
+  .view-profiles-container h1 {
+    font-size: 1.25rem !important;
+    margin-bottom: 0.75rem !important;
+  }
+
+  .view-profiles-container .profilesGrid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .view-profiles-container .profileCard {
+    padding: 0.75rem !important;
+  }
+
+  .view-profiles-container .profileName {
+    font-size: 0.9375rem !important;
+    margin-bottom: 0.375rem !important;
+  }
+
+  .view-profiles-container .profileInfo {
+    font-size: 0.6875rem !important;
+    margin-bottom: 0.125rem !important;
+  }
+
+  .view-profiles-container .searchInputContainer {
+    max-width: 100% !important;
+  }
+
+  .view-profiles-container .searchInput {
+    font-size: 0.8125rem !important;
+    padding-left: 1.875rem !important;
+  }
+
+  .modal {
+    padding: 0.75rem !important;
+  }
+
+  .modal-content {
+    padding: 1rem !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .modal-title {
+    font-size: 1.125rem !important;
+  }
+
+  .modal .label {
+    font-size: 0.75rem !important;
+  }
+
+  .modal .value {
+    font-size: 0.875rem !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  .modal .modal-value {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: break-word !important;
+    max-width: 100% !important;
+  }
+
+  .modal-header h2 {
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    max-width: calc(100% - 2rem) !important;
+  }
+}

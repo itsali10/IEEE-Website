@@ -62,16 +62,20 @@ const departmentOptions = {
 };
 
 const interviewDateOptions = [
-    'Tuesday 30/09/2025',
-    'Wednesday 01/10/2025',
-    'Thursday 02/10/2025',
+    'Sunday 15/02/2026',
+    'Monday 16/02/2026',
+    'Tuesday 17/02/2026',
 ];
 
 const interviewTimeOptions = [
-    '6:00 PM - 6:30 PM',
-    '6:30 PM - 7:00 PM',
-    '7:00 PM - 7:30 PM',
-    '7:30 PM - 8:00 PM',
+    '8:00 PM - 8:15 PM',
+    '8:15 PM - 8:30 PM',
+    '8:30 PM - 8:45 PM',
+    '8:45 PM - 9:00 PM',
+    '9:00 PM - 9:15 PM',
+    '9:15 PM - 9:30 PM',
+    '9:30 PM - 9:45 PM',
+    '9:45 PM - 10:00 PM',
 ];
 
 const JoinUs = () => {
@@ -90,7 +94,8 @@ const JoinUs = () => {
         hasIEEEMembership: '',
         ieeeMembershipId: '',
         firstCommittee: '',
-        secondCommittee: '',
+        hasOtherActivities: '',
+        otherActivities: '',
         interviewDate: '',
         interviewTime: '',
         previousWork: '',
@@ -147,9 +152,9 @@ const JoinUs = () => {
         return '';
     };
 
-    // Check if branding is selected as first or second committee
+    // Check if branding is selected as first committee
     const isBrandingSelected = () => {
-        return formData.firstCommittee === 'Branding' || formData.secondCommittee === 'Branding';
+        return formData.firstCommittee === 'Branding';
     };
 
     const validateField = (name, value) => {
@@ -212,11 +217,6 @@ const JoinUs = () => {
                 [name]: value
             };
             
-            // If first committee is changed and second committee is the same, clear second committee
-            if (name === 'firstCommittee' && prev.secondCommittee === value) {
-                newData.secondCommittee = '';
-            }
-            
             // If faculty changes, reset department
             if (name === 'faculty') {
                 newData.department = '';
@@ -239,7 +239,7 @@ const JoinUs = () => {
         const requiredFields = [
             'name', 'email', 'phone', 'dob', 
             'faculty', 'department', 'studentId', 'graduationYear', 'recruiterName', 
-            'gender', 'hasIEEEMembership', 'firstCommittee', 'secondCommittee',
+            'gender', 'hasIEEEMembership', 'firstCommittee', 'hasOtherActivities',
             'interviewDate', 'interviewTime'
         ];
 
@@ -263,10 +263,9 @@ const JoinUs = () => {
             newErrors.ieeeMembershipId = 'IEEE Membership ID is required when you have membership';
         }
 
-
-        // Check if committees are different
-        if (formData.firstCommittee === formData.secondCommittee && formData.firstCommittee) {
-            newErrors.secondCommittee = 'Second committee must be different from first committee';
+        // Special validation for other activities
+        if (formData.hasOtherActivities === 'yes' && (!formData.otherActivities || formData.otherActivities.trim() === '')) {
+            newErrors.otherActivities = 'Please specify your other student activities';
         }
 
         setErrors(newErrors);
@@ -304,7 +303,8 @@ const JoinUs = () => {
                     hasIEEEMembership: data.hasIEEEMembership,
                     ieeeMembershipId: data.ieeeMembershipId || '',
                     firstCommittee: data.firstCommittee,
-                    secondCommittee: data.secondCommittee,
+                    hasOtherActivities: data.hasOtherActivities,
+                    otherActivities: data.otherActivities || '',
                     interviewDate: data.interviewDate,
                     interviewTime: data.interviewTime,
                     previousWork: data.previousWork || ''
@@ -361,7 +361,8 @@ const JoinUs = () => {
                         hasIEEEMembership: '',
                         ieeeMembershipId: '',
                         firstCommittee: '',
-                        secondCommittee: '',
+                        hasOtherActivities: '',
+                        otherActivities: '',
                         interviewDate: '',
                         interviewTime: '',
                         previousWork: '',
@@ -620,7 +621,7 @@ const JoinUs = () => {
                 </div>
                 <div className="form-row">
                     <div className="form-group">
-                        <label htmlFor="firstCommittee">1st Desired Committee</label>
+                        <label htmlFor="firstCommittee">Desired Committee</label>
                         <select id="firstCommittee" name="firstCommittee" value={formData.firstCommittee} onChange={handleChange} required>
                             <option value="">Select a committee</option>
                             {committeeOptions.map(opt => (
@@ -629,19 +630,57 @@ const JoinUs = () => {
                         </select>
                         {errors.firstCommittee && <span className="form-error">{errors.firstCommittee}</span>}
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="secondCommittee">2nd Desired Committee</label>
-                        <select id="secondCommittee" name="secondCommittee" value={formData.secondCommittee} onChange={handleChange} required>
-                            <option value="">Select a committee</option>
-                            {committeeOptions
-                                .filter(opt => opt !== formData.firstCommittee)
-                                .map(opt => (
-                                    <option key={opt} value={opt}>{opt}</option>
-                                ))}
-                        </select>
-                        {errors.secondCommittee && <span className="form-error">{errors.secondCommittee}</span>}
+                </div>
+                <div className="form-row">
+                    <div className="form-group other-activities-group">
+                        <label>Are you in other student activities?</label>
+                        <div className="radio-buttons">
+                            <button 
+                                type="button" 
+                                className={`radio-btn ${formData.hasOtherActivities === 'yes' ? 'active' : ''}`}
+                                onClick={() => {
+                                    setFormData(prev => ({ ...prev, hasOtherActivities: 'yes' }));
+                                    setErrors(prev => ({ ...prev, hasOtherActivities: '' }));
+                                }}
+                            >
+                                Yes
+                            </button>
+                            <button 
+                                type="button" 
+                                className={`radio-btn ${formData.hasOtherActivities === 'no' ? 'active' : ''}`}
+                                onClick={() => {
+                                    setFormData(prev => ({ ...prev, hasOtherActivities: 'no', otherActivities: '' }));
+                                    setErrors(prev => ({ ...prev, hasOtherActivities: '', otherActivities: '' }));
+                                }}
+                            >
+                                No
+                            </button>
+                        </div>
+                        {errors.hasOtherActivities && <span className="form-error">{errors.hasOtherActivities}</span>}
                     </div>
-                    
+                    <div className="form-group">
+                        {formData.hasOtherActivities === 'yes' ? (
+                            <>
+                                <label htmlFor="otherActivities">What activities?</label>
+                                <input 
+                                    type="text" 
+                                    id="otherActivities" 
+                                    name="otherActivities" 
+                                    value={formData.otherActivities} 
+                                    onChange={handleChange} 
+                                    required 
+                                    placeholder=""
+                                    className={errors.otherActivities ? 'error' : ''}
+                                />
+                                {errors.otherActivities && <span className="form-error">{errors.otherActivities}</span>}
+                            </>
+                        ) : (
+                            <div style={{ visibility: 'hidden' }}>
+                                <label>What activities?</label>
+                                <input type="text" disabled />
+                            </div>
+                        )}
+                    </div>
                 </div>
                 <div className="form-row">
                     <div className="form-group">

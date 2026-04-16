@@ -1,0 +1,11 @@
+/* My Assigned Tasks Mobile Styles */
+
+@media (max-width: 768px) {
+  .my-assigned-tasks-container {
+    padding: 1rem !important;
+  }
+
+  .my-assigned-tasks-container .tasksGrid {
+    gap: 0.75rem !important;
+  }
+}
