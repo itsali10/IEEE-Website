@@ -2,7 +2,7 @@ import React from 'react';
 import { useAuth } from '../context/AuthContext';
 
 const rowStyle = { display: 'flex', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid #eef2f7' };
-const keyStyle = { color: '#6b7280', fontWeight: 600 };
+const keyStyle = { color: '#4b5563', fontWeight: 600 };
 const valStyle = { color: '#0a2540', fontWeight: 700 };
 
 const Profile = () => {

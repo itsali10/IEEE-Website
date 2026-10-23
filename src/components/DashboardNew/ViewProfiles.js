@@ -326,7 +326,7 @@ const ViewProfiles = () => {
       position: 'absolute',
       left: '0.75rem',
       top: '0.75rem',
-      color: '#6b7280',
+      color: '#4b5563',
     },
     searchInput: {
       width: '100%',
@@ -374,7 +374,7 @@ const ViewProfiles = () => {
     },
     committeeCount: {
       fontSize: '0.875rem',
-      color: '#6b7280',
+      color: '#4b5563',
       fontWeight: '500',
     },
     profilesGrid: {
@@ -400,7 +400,7 @@ const ViewProfiles = () => {
     },
     profileInfo: {
       fontSize: '0.875rem',
-      color: '#6b7280',
+      color: '#4b5563',
       marginBottom: '0.25rem',
     },
     profileLabel: {
@@ -443,7 +443,7 @@ const ViewProfiles = () => {
       border: 'none',
       fontSize: '1.5rem',
       cursor: 'pointer',
-      color: '#6b7280',
+      color: '#4b5563',
       padding: '0',
       lineHeight: '1',
     },
@@ -453,7 +453,7 @@ const ViewProfiles = () => {
     label: {
       fontSize: '0.875rem',
       fontWeight: '600',
-      color: '#6b7280',
+      color: '#4b5563',
       marginBottom: '0.5rem',
     },
     value: {
@@ -530,7 +530,7 @@ const ViewProfiles = () => {
                     <div style={{
                       marginTop: '0.75rem',
                       fontSize: '0.75rem',
-                      color: '#6b7280',
+                      color: '#4b5563',
                       fontStyle: 'italic',
                     }}>
                       Click to collapse
@@ -569,7 +569,7 @@ const ViewProfiles = () => {
                   </h2>
                   <span style={{
                     fontSize: '0.95rem',
-                    color: '#6b7280',
+                    color: '#4b5563',
                     fontWeight: '500',
                     padding: '0.25rem 0.75rem',
                     background: '#f3f4f6',
@@ -619,7 +619,7 @@ const ViewProfiles = () => {
           })}
         </>
       ) : (
-        <div style={{ textAlign: 'center', paddingTop: '3rem', paddingBottom: '3rem', color: '#6b7280' }}>
+        <div style={{ textAlign: 'center', paddingTop: '3rem', paddingBottom: '3rem', color: '#4b5563' }}>
           No profiles found
         </div>
       )}

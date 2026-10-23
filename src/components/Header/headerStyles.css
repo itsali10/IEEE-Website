@@ -148,7 +148,7 @@ nav .text-xs {
 }
 
 nav .text-gray-600 {
-  color: #6b7280;
+  color: #4b5563;
 }
 
 nav .hidden {
@@ -191,21 +191,21 @@ nav .nav-link.active {
 nav .join-button {
   background-color: #00629b;
   color: white;
-  padding: 0.625rem 1.25rem; /* Increased padding */
+  padding: 0.625rem 1.25rem;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   font-weight: 500;
-  font-size: 1rem; /* Increased from 0.875rem */
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  text-decoration: none; /* Remove underline */
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
 }
 
 nav .join-button:hover {
   background-color: #004d7a;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  text-decoration: none; /* Ensure no underline on hover */
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
 }
 
 /* Logout Button */
@@ -214,7 +214,7 @@ nav .logout-button {
   color: white;
   padding: 0.625rem 1.25rem;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
@@ -237,7 +237,7 @@ nav .logout-button:hover {
   color: white;
   padding: 0.625rem 1.25rem;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
@@ -271,7 +271,7 @@ nav .mobile-menu-btn {
     background-color: #00629b;
     color: white;
     border: none;
-    border-radius: 0.375rem;
+    border-radius: var(--radius-md);
     padding: 0.5rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -326,7 +326,7 @@ nav .mobile-link {
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   transition: all 0.2s ease;
   background: none;
   border: none;
@@ -353,7 +353,7 @@ nav .join-btn {
   color: white;
   padding: 0.875rem 1.25rem; /* Increased padding */
   border: none;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   font-weight: 500;
   font-size: 1rem; /* Increased from 0.875rem */
   cursor: pointer;
@@ -375,7 +375,7 @@ nav .logout-btn {
   color: white;
   padding: 0.875rem 1.25rem;
   border: none;
-  border-radius: 0.375rem;
+  border-radius: var(--radius-md);
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;

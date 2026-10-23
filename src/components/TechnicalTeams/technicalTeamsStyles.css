@@ -4,9 +4,14 @@
   padding: 5rem 0;
 }
 
-/* Remove all focus outlines in technical teams section */
+/* Focus visible ring for technical teams section */
 .technical-teams *:focus {
-  outline: none !important;
+  outline: none;
+}
+.technical-teams *:focus-visible {
+  outline: 2px solid #00629b;
+  outline-offset: 2px;
+  border-radius: 3px;
 }
 
 .technical-teams .max-w-7xl {
@@ -59,7 +64,7 @@
 /* Section Description */
 .technical-teams .section-description {
   font-size: 1.25rem;
-  color: #6b7280;
+  color: #4b5563;
   max-width: 48rem;
   margin: 0 auto;
   line-height: 1.75;
@@ -87,16 +92,11 @@
   transition: all 0.5s ease;
   overflow: hidden;
   border: 1px solid #e5e7eb;
-  outline: none;
 }
 
 .technical-teams .team-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
-.technical-teams .team-card:focus {
-  outline: none;
 }
 
 /* Card Content */
@@ -169,7 +169,7 @@
 
 /* Team Description */
 .technical-teams .team-description {
-  color: #6b7280;
+  color: #4b5563;
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 0;
@@ -236,9 +236,9 @@
   transform: scale(1.05);
 }
 
-.technical-teams .join-button:focus {
-  outline: none !important;
-  box-shadow: none !important;
+.technical-teams .join-button:focus-visible {
+  outline: 2px solid #00629b;
+  outline-offset: 2px;
 }
 
 .technical-teams .learn-more-button {
@@ -257,9 +257,9 @@
   background-color: rgba(0, 98, 155, 0.05);
 }
 
-.technical-teams .learn-more-button:focus {
-  outline: none !important;
-  box-shadow: none !important;
+.technical-teams .learn-more-button:focus-visible {
+  outline: 2px solid #00629b;
+  outline-offset: 2px;
 }
 
 /* Arrow Icon */
@@ -351,9 +351,9 @@
   transform: translateY(-2px);
 }
 
-.technical-teams .explore-button:focus {
-  outline: none !important;
-  box-shadow: none !important;
+.technical-teams .explore-button:focus-visible {
+  outline: 2px solid #00629b;
+  outline-offset: 2px;
 }
 
 .technical-teams .contact-button {
@@ -373,9 +373,9 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
-.technical-teams .contact-button:focus {
-  outline: none !important;
-  box-shadow: none !important;
+.technical-teams .contact-button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
 }
 
 /* Responsive Design */

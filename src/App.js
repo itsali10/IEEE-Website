@@ -92,56 +92,68 @@ function App() {
                 <Header />
               )
             }
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/events" element={<Events />} />
-              {/* <Route path="/joinus" element={<JoinUs />} /> */}
-              <Route path="/teams" element={<Teams />} /> 
-              <Route path="/forms" element={<Forms />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} />
-              <Route 
-                path="/dashboard" 
-                element={
-                  <ProtectedRoute requireAdmin={false}>
-                    <Dashboard />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/tasks" 
-                element={
-                  <ProtectedRoute>
-                    <Tasks />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/view-tasks" 
-                element={
-                  <ProtectedRoute requireAdmin={false}>
-                    <ViewTasks />
-                  </ProtectedRoute>
-                } 
-              />
-              <Route 
-                path="/profile" 
-                element={
-                  <ProtectedRoute requireAdmin={false}>
-                    <Profile />
-                  </ProtectedRoute>
-                }
-              />
-              <Route 
-                path="/my-assigned-tasks" 
-                element={
-                  <ProtectedRoute>
-                    <MyAssignedTasks />
-                  </ProtectedRoute>
-                }
-              />
-            </Routes>
+            <main id="main-content">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={location.pathname}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18, ease: 'easeInOut' }}
+              >
+              <Routes location={location}>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/events" element={<Events />} />
+                {/* <Route path="/joinus" element={<JoinUs />} /> */}
+                <Route path="/teams" element={<Teams />} />
+                <Route path="/forms" element={<Forms />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/signup" element={<Signup />} />
+                <Route
+                  path="/dashboard"
+                  element={
+                    <ProtectedRoute requireAdmin={false}>
+                      <Dashboard />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/tasks"
+                  element={
+                    <ProtectedRoute>
+                      <Tasks />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/view-tasks"
+                  element={
+                    <ProtectedRoute requireAdmin={false}>
+                      <ViewTasks />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/profile"
+                  element={
+                    <ProtectedRoute requireAdmin={false}>
+                      <Profile />
+                    </ProtectedRoute>
+                  }
+                />
+                <Route
+                  path="/my-assigned-tasks"
+                  element={
+                    <ProtectedRoute>
+                      <MyAssignedTasks />
+                    </ProtectedRoute>
+                  }
+                />
+              </Routes>
+              </motion.div>
+            </AnimatePresence>
+            </main>
             {/* Back button now integrated into AuthTopbar; keep floating only on public pages when logged in */}
             {['/dashboard','/tasks','/view-tasks','/profile','/my-assigned-tasks'].includes(location.pathname) ? null : <BackToDashboard />}
             {/* Hide Footer on protected routes */}

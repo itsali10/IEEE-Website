@@ -104,6 +104,23 @@ const EventsCard = (props) => {
                                 <div className='enhanced-event-description-animated'>
                                     <h3 className='enhanced-session-title-animated'>Event Details</h3>
                                     <p className='enhanced-session-text-animated'>{props.eventDesc}</p>
+                                    {props.universityLinks && props.universityLinks.length > 0 && (
+                                        <p className='enhanced-university-links-animated'>
+                                            {props.universityLinks.map((uni, index) => (
+                                                <span key={uni.url}>
+                                                    <a
+                                                        href={uni.url}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className='enhanced-university-link'
+                                                    >
+                                                        {uni.name}
+                                                    </a>
+                                                    {index < props.universityLinks.length - 1 && ', '}
+                                                </span>
+                                            ))}
+                                        </p>
+                                    )}
                                 </div>
                             </div>
                         </div>

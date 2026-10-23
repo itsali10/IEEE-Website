@@ -409,7 +409,7 @@ const HRReviews = () => {
     },
     subtitle: {
       fontSize: '0.95rem',
-      color: '#6b7280',
+      color: '#4b5563',
       marginBottom: '1.5rem',
     },
     card: {
@@ -447,7 +447,7 @@ const HRReviews = () => {
         <p style={styles.subtitle}>
           This section is only available to Human Resources, Board, Officers, and Vice.
         </p>
-        <div style={{ color: '#6b7280' }}>
+        <div style={{ color: '#4b5563' }}>
           You do not have permission to view HR Reviews.
         </div>
       </div>
@@ -467,7 +467,7 @@ const HRReviews = () => {
       ) : hrOverviewError ? (
         <div style={styles.error}>{hrOverviewError}</div>
       ) : hrCommitteeData.length === 0 ? (
-        <div style={{ color: '#6b7280' }}>No committee data or tasks found yet.</div>
+        <div style={{ color: '#4b5563' }}>No committee data or tasks found yet.</div>
       ) : (
         <div
           style={{
@@ -504,7 +504,7 @@ const HRReviews = () => {
                 <span
                   style={{
                     fontSize: '0.85rem',
-                    color: '#6b7280',
+                    color: '#4b5563',
                   }}
                 >
                   {committee.members.length} member
@@ -515,7 +515,7 @@ const HRReviews = () => {
               {committee.members.length === 0 ? (
                 <div
                   style={{
-                    color: '#6b7280',
+                    color: '#4b5563',
                     fontSize: '0.9rem',
                   }}
                 >
@@ -568,7 +568,7 @@ const HRReviews = () => {
                                 style={{
                                   fontSize: '0.75rem',
                                   fontWeight: 400,
-                                  color: '#6b7280',
+                                  color: '#4b5563',
                                   marginLeft: '0.5rem',
                                   textTransform: 'capitalize',
                                 }}
@@ -581,7 +581,7 @@ const HRReviews = () => {
                             <div
                               style={{
                                 fontSize: '0.8rem',
-                                color: '#6b7280',
+                                color: '#4b5563',
                               }}
                             >
                               ID: {member.studentId}
@@ -591,7 +591,7 @@ const HRReviews = () => {
                         <div
                           style={{
                             fontSize: '0.8rem',
-                            color: '#6b7280',
+                            color: '#4b5563',
                           }}
                         >
                           {member.tasks.length} task
@@ -603,7 +603,7 @@ const HRReviews = () => {
                         <div
                           style={{
                             fontSize: '0.8rem',
-                            color: '#6b7280',
+                            color: '#4b5563',
                             marginBottom: '0.25rem',
                           }}
                         >
@@ -649,7 +649,7 @@ const HRReviews = () => {
                                 <div
                                   style={{
                                     fontSize: '0.8rem',
-                                    color: '#6b7280',
+                                    color: '#4b5563',
                                   }}
                                 >
                                   {task.due_date &&

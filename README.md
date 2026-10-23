@@ -2,6 +2,13 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Environment Setup
+
+This app requires a `.env` file with Supabase and Google Apps Script credentials before it
+will run with real data. Copy `.env.example` to `.env` and follow **[ENV_SETUP.md](ENV_SETUP.md)**
+for step-by-step instructions on generating every value from scratch (new Supabase project,
+database schema, and five Google Apps Script web app deployments).
+
 ## Available Scripts
 
 In the project directory, you can run:

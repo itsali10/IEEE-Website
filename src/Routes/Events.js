@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import HeroWithSlope from '../components/HeroWithSlope/HeroWithSlope'
 import EventsCard from '../components/EventsCard/EventsCard'
 import "../css/eventsStyles.css"
@@ -21,6 +21,18 @@ import reepe2026_4 from "../assets/reepe2026-4.jpeg"
 import reepe2026_5 from "../assets/reepe2026-5.jpeg"
 import reepe2026_6 from "../assets/reepe2026-6.jpeg"
 import reepe2026_7 from "../assets/reepe2026-7.jpeg"
+import unitour1 from "../assets/elsewedy/elsewedy1.jpeg"
+import unitour2 from "../assets/elsewedy/elsewedy2.jpeg"
+import unitour3 from "../assets/elsewedy/elsewedy3.jpeg"
+import unitour4 from "../assets/elsewedy/elsewedy4.jpeg"
+import unitour5 from "../assets/elsewedy/elsewedy5.jpeg"
+import unitour6 from "../assets/elsewedy/elsewedy6.jpeg"
+import unitour7 from "../assets/elsewedy/elsewedy7.jpeg"
+import unitour8 from "../assets/elsewedy/elsewedy8.jpeg"
+import unitour9 from "../assets/elsewedy/elsewedy9.jpeg"
+import unitour10 from "../assets/elsewedy/elsewedy10.jpeg"
+import unitour11 from "../assets/elsewedy/elsewedy11.jpeg"
+import unitour12 from "../assets/elsewedy/elsewedy12.jpeg"
 import ramadan1 from "../assets/ramadan1.jpg"
 import camp1 from "../assets/camp1.jpg"
 import camp2 from "../assets/camp2.jpg"
@@ -104,7 +116,22 @@ const eventsData = [
         season: "Event",
         eventDate: "1-04-2026",
         eventLocation: "AASTMT Cairo",
-        year: 2026
+        year: 2026,
+        universityLinks: [
+            { name: "Arab Academy for Science, Technology and Maritime Transport", url: "https://aast.edu/en/" }
+        ]
+    },
+    {
+        eventName: "El Sewedy Visit 2026",
+        eventDesc: "El Sewedy Visit 2026 was a 2-day technical workshop organized in collaboration with Elsewedy Electric Cable Accessories and IEEE SAC Egypt, held under the theme \"Engineering the Future — Bridging Academia to Industry.\"\n\nDay 1 kicked off with a warm welcome and an introduction to Elsewedy Electric Group and its Cable Accessories division, followed by in-depth theoretical sessions covering the Fundamentals of Electrical Power Systems, a comparison of Underground Cables vs. Overhead Transmission Lines, and a deep dive into Medium Voltage Cable construction, layers, and accessory technologies. The day wrapped up with a session on Electrical Tests and International Standards, complete with a Q&A.\n\nDay 2 shifted to hands-on practice — participants began with a recap and safety briefing before getting into tool identification, PPE usage, and cable preparation. They then moved through Joint Installation and Termination & Elbow Installation workshops, gaining real-world experience with industry-grade equipment. The event concluded with a certificate ceremony, feedback session, and closing remarks, leaving participants with practical skills and a deeper connection to the electrical power industry.",
+        images: [unitour1, unitour2, unitour3, unitour4, unitour5, unitour6, unitour7, unitour8, unitour9, unitour10, unitour11, unitour12],
+        season: "Event",
+        eventDate: "15-04-2026",
+        eventLocation: "AAST Engineering Building A",
+        year: 2026,
+        universityLinks: [
+            { name: "Arab Academy for Science, Technology and Maritime Transport", url: "https://aast.edu/en/" }
+        ]
     },
     {
         eventName: "Ventus",
@@ -282,7 +309,14 @@ const Events = () => {
     const [selectedYear, setSelectedYear] = useState(2026);
     const [selectedType, setSelectedType] = useState("All");
     const [searchQuery, setSearchQuery] = useState("");
+    const [showBackToTop, setShowBackToTop] = useState(false);
     const container = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => setShowBackToTop(window.scrollY > 300);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
     
     const {scrollYProgress} = useScroll({
         target:container,
@@ -312,6 +346,7 @@ const Events = () => {
                         key={year.value}
                         className={`events-year-btn${selectedYear === year.value ? ' active' : ''}`}
                         onClick={() => setSelectedYear(year.value)}
+                        aria-pressed={selectedYear === year.value}
                     >
                         {year.label}
                     </button>
@@ -325,6 +360,7 @@ const Events = () => {
                         key={type}
                         className={`events-type-btn${selectedType === type ? ' active' : ''}`}
                         onClick={() => setSelectedType(type)}
+                        aria-pressed={selectedType === type}
                     >
                         {type}
                     </button>
@@ -340,6 +376,7 @@ const Events = () => {
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="events-search-input"
+                    aria-label="Search events by name"
                 />
             </div>
             </div>
@@ -382,6 +419,17 @@ const Events = () => {
             
             {/* Spacing after events */}
             <div style={{ height: '10vh', background: 'transparent' }}></div>
+
+            {/* Back to Top Button */}
+            {showBackToTop && (
+                <button
+                    className="events-back-to-top"
+                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    aria-label="Back to top"
+                >
+                    ↑
+                </button>
+            )}
         </div>
     )
 }

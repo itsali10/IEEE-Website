@@ -118,9 +118,11 @@ const DashboardHeader = ({ currentPage, onPageChange, onLogout, canAccessTaskSys
           </motion.div>
 
           {/* Hamburger Menu Button */}
-          <button 
-            className="dashboard-mobile-menu-btn" 
+          <button
+            className="dashboard-mobile-menu-btn"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <CloseIcon className="h-6 w-6" /> : <MenuIcon className="h-6 w-6" />}
           </button>

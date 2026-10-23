@@ -210,7 +210,7 @@ const ViewTasks = () => {
 									)}
 								</div>
                                 {/* Display assignees if available */}
-                                <div style={{ marginTop: 8, color: '#6b7280', fontSize: '0.9rem' }}>
+                                <div style={{ marginTop: 8, color: '#4b5563', fontSize: '0.9rem' }}>
                                     {(assigneesMap.get(t.id) || []).length > 0 && (
                                         <span>
                                             Assignees: {(assigneesMap.get(t.id) || []).map(a => a.name).join(', ')}

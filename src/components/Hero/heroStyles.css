@@ -97,8 +97,12 @@
 }
 
 .hero-joinus-btn:focus {
-  outline: none !important;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  outline: none;
+}
+
+.hero-joinus-btn:focus-visible {
+  outline: 2px solid #00629b;
+  outline-offset: 3px;
 }
 
 .hero-joinus-btn:hover {

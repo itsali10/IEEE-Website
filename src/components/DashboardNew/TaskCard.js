@@ -33,6 +33,17 @@ const TaskCard = ({
     return priority.charAt(0).toUpperCase() + priority.slice(1).toLowerCase();
   };
 
+  const getPriorityIcon = (priority) => {
+    const p = (priority || '').toLowerCase();
+    switch (p) {
+      case 'urgent': return '●';
+      case 'high':   return '●';
+      case 'medium': return '●';
+      case 'low':    return '●';
+      default:       return '●';
+    }
+  };
+
   const formatDate = (dateString) => {
     try {
       return new Date(dateString).toLocaleDateString('en-US', {
@@ -52,11 +63,11 @@ const TaskCard = ({
     card: {
       background: '#ffffff',
       border: '1px solid #e5e7eb',
-      borderRadius: '0.5rem',
+      borderRadius: '0.75rem',
       padding: '1.5rem',
-      boxShadow: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-      transition: 'all 0.2s',
-      opacity: isCompleted ? 0.75 : 1,
+      boxShadow: '0 1px 3px rgba(0,0,0,0.08)',
+      transition: 'box-shadow 0.2s ease, transform 0.2s ease',
+      opacity: isCompleted ? 0.72 : 1,
     },
     container: {
       display: 'flex',
@@ -87,16 +98,18 @@ const TaskCard = ({
       flex: 1,
     },
     title: {
-      fontSize: '1.125rem',
-      fontWeight: '600',
+      fontSize: '1rem',
+      fontWeight: '700',
       color: isCompleted ? '#9ca3af' : '#0f172a',
       textDecoration: isCompleted ? 'line-through' : 'none',
       margin: 0,
+      lineHeight: 1.4,
     },
     description: {
-      color: '#6b7280',
-      marginTop: '0.25rem',
-      fontSize: '0.9375rem',
+      color: '#4b5563',
+      marginTop: '0.375rem',
+      fontSize: '0.875rem',
+      lineHeight: 1.5,
     },
     priorityBadge: {
       padding: '0.25rem 0.75rem',
@@ -118,10 +131,10 @@ const TaskCard = ({
       display: 'flex',
       alignItems: 'center',
       gap: '0.5rem',
-      color: '#6b7280',
+      color: '#4b5563',
     },
     metaLabel: {
-      color: '#6b7280',
+      color: '#4b5563',
     },
     metaValue: {
       fontWeight: '500',
@@ -158,6 +171,7 @@ const TaskCard = ({
 
             {/* Priority Badge */}
             <span className="task-priority-badge" style={styles.priorityBadge}>
+              <span aria-hidden="true" style={{ fontSize: '0.6rem', verticalAlign: 'middle', marginRight: '0.3rem' }}>{getPriorityIcon(task.priority)}</span>
               {getPriorityLabel(task.priority)}
             </span>
           </div>

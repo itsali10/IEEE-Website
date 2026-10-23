@@ -179,7 +179,7 @@ const ViewAssignedTasks = ({ isBoa = false }) => {
       position: 'absolute',
       left: '0.75rem',
       top: '0.75rem',
-      color: '#6b7280',
+      color: '#4b5563',
     },
     searchInput: {
       width: '100%',
@@ -214,7 +214,7 @@ const ViewAssignedTasks = ({ isBoa = false }) => {
       paddingBottom: '3rem',
     },
     noTasksText: {
-      color: '#6b7280',
+      color: '#4b5563',
       fontSize: '1.125rem',
     },
     loadingText: {
@@ -265,9 +265,18 @@ const ViewAssignedTasks = ({ isBoa = false }) => {
 
       {/* Tasks Grid */}
       {loading || isLoading ? (
-        <div style={styles.loadingText}>Loading tasks...</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '3rem 0', color: '#4b5563' }}>
+          <div style={{ width: '20px', height: '20px', border: '3px solid #e5e7eb', borderTopColor: '#00629b', borderRadius: '50%', animation: 'spin 0.8s linear infinite', flexShrink: 0 }} />
+          <span>Loading tasks…</span>
+        </div>
       ) : error ? (
-        <div style={styles.errorText}>{error}</div>
+        <div style={{ background: '#fff0f0', border: '1px solid #fcc', borderRadius: '8px', padding: '1.25rem', color: '#b91c1c', display: 'flex', gap: '0.75rem', alignItems: 'flex-start' }}>
+          <span style={{ fontSize: '1.25rem', flexShrink: 0 }}>⚠️</span>
+          <div>
+            <strong>Failed to load tasks</strong>
+            <p style={{ margin: '4px 0 0', fontSize: '0.875rem' }}>{error}</p>
+          </div>
+        </div>
       ) : filteredTasks.length > 0 ? (
         <div style={styles.tasksGrid}>
           {filteredTasks.map((task) => (
@@ -281,8 +290,10 @@ const ViewAssignedTasks = ({ isBoa = false }) => {
           ))}
         </div>
       ) : (
-        <div style={styles.noTasks}>
-          <p style={styles.noTasksText}>No tasks found</p>
+        <div style={{ textAlign: 'center', padding: '4rem 2rem', background: '#f9fafb', borderRadius: '12px', border: '1px dashed #d1d5db' }}>
+          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>✅</div>
+          <p style={{ fontWeight: 600, color: '#374151', marginBottom: '0.25rem' }}>No tasks assigned to you</p>
+          <p style={{ fontSize: '0.875rem', color: '#4b5563' }}>When a task is assigned to you, it will appear here.</p>
         </div>
       )}
     </div>

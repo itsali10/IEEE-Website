@@ -161,7 +161,7 @@ const EventsList = () => {
       position: 'absolute',
       left: '0.75rem',
       top: '0.75rem',
-      color: '#6b7280',
+      color: '#4b5563',
     },
     searchInput: {
       width: '100%',
@@ -197,13 +197,13 @@ const EventsList = () => {
     },
     eventDescription: {
       fontSize: '1rem',
-      color: '#6b7280',
+      color: '#4b5563',
       marginBottom: '1.5rem',
       lineHeight: '1.6',
     },
     eventInfo: {
       fontSize: '1rem',
-      color: '#6b7280',
+      color: '#4b5563',
       marginBottom: '0.75rem',
     },
     eventLabel: {
@@ -237,9 +237,40 @@ const EventsList = () => {
 
       {/* Events Grid */}
       {isLoading ? (
-        <div>Loading...</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '3rem 0', color: '#4b5563' }}>
+          <div style={{
+            width: '20px', height: '20px',
+            border: '3px solid #e5e7eb',
+            borderTopColor: '#00629b',
+            borderRadius: '50%',
+            animation: 'spin 0.8s linear infinite',
+            flexShrink: 0,
+          }} />
+          <span>Loading events and meetings…</span>
+        </div>
       ) : error ? (
-        <div style={{ color: '#dc2626' }}>{error}</div>
+        <div style={{
+          background: '#fff0f0',
+          border: '1px solid #fcc',
+          borderRadius: '8px',
+          padding: '1.5rem',
+          color: '#b91c1c',
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '0.75rem',
+        }}>
+          <span style={{ fontSize: '1.25rem', flexShrink: 0 }}>⚠️</span>
+          <div>
+            <strong>Failed to load data</strong>
+            <p style={{ margin: '4px 0 12px', fontSize: '0.9rem' }}>{error}</p>
+            <button
+              onClick={() => window.location.reload()}
+              style={{ background: '#b91c1c', color: 'white', border: 'none', borderRadius: '6px', padding: '6px 14px', cursor: 'pointer', fontSize: '0.875rem', fontWeight: 600 }}
+            >
+              Retry
+            </button>
+          </div>
+        </div>
       ) : filteredItems.length > 0 ? (
         <div style={styles.eventsGrid}>
           {filteredItems.map((item) => (
@@ -310,8 +341,21 @@ const EventsList = () => {
           ))}
         </div>
       ) : (
-        <div style={{ textAlign: 'center', paddingTop: '3rem', paddingBottom: '3rem', color: '#6b7280' }}>
-          {selectedDate ? `No events or meetings found for ${formatDate(selectedDate)}` : 'No events or meetings found'}
+        <div style={{
+          textAlign: 'center',
+          padding: '4rem 2rem',
+          color: '#4b5563',
+          background: '#f9fafb',
+          borderRadius: '12px',
+          border: '1px dashed #d1d5db',
+        }}>
+          <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>📅</div>
+          <p style={{ fontWeight: 600, fontSize: '1rem', marginBottom: '0.25rem' }}>
+            {selectedDate ? `No events for ${formatDate(selectedDate)}` : 'No events or meetings yet'}
+          </p>
+          <p style={{ fontSize: '0.875rem', color: '#4b5563' }}>
+            {selectedDate ? 'Try selecting a different date.' : 'Events and meetings created by your team will appear here.'}
+          </p>
         </div>
       )}
     </div>

@@ -22,12 +22,12 @@ const Hero = () => {
         </canvas>
         <div className="hero-left-section">
             <div className="hero-logos-flex">
-                <img src={lBracket} alt="error"/>
-                <img src={sbWhite} alt="Student Branch" className="sb-logo" onClick={() => window.location.reload()}/>
+                <img src={lBracket} alt="" aria-hidden="true"/>
+                <img src={sbWhite} alt="IEEE AAST Student Branch" className="sb-logo" onClick={() => window.location.reload()}/>
                 <a href="https://aast.edu/en/" target="_blank" rel="noopener noreferrer">
                     <img src={aastWhite} alt="AAST" className="aast-logo"/>
                 </a>
-                <img src={rBracket} alt="error"/>
+                <img src={rBracket} alt="" aria-hidden="true"/>
             </div>
             <h1>
                 Connect. Innovate. <br></br>

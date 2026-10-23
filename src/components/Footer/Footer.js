@@ -67,32 +67,40 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
+                  aria-label="Follow us on Instagram"
                 >
-                  <InstagramIcon className="social-icon" />
+                  <InstagramIcon className="social-icon" aria-hidden="true" />
+                  <span className="social-label">Instagram</span>
                 </a>
                 <a
                   href="https://www.facebook.com/profile.php?id=100084582138491"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
+                  aria-label="Follow us on Facebook"
                 >
-                  <FacebookIcon className="social-icon" />
+                  <FacebookIcon className="social-icon" aria-hidden="true" />
+                  <span className="social-label">Facebook</span>
                 </a>
                 <a
                   href="https://www.linkedin.com/company/ieee-aast-cairo-sb/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
+                  aria-label="Connect with us on LinkedIn"
                 >
-                  <LinkedInIcon className="social-icon" />
+                  <LinkedInIcon className="social-icon" aria-hidden="true" />
+                  <span className="social-label">LinkedIn</span>
                 </a>
                 <a
                   href="https://www.tiktok.com/@ieee.aast.cairo"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-link"
+                  aria-label="Follow us on TikTok"
                 >
-                  <FaTiktok className="social-icon" />
+                  <FaTiktok className="social-icon" aria-hidden="true" />
+                  <span className="social-label">TikTok</span>
                 </a>
               </div>
             </div>

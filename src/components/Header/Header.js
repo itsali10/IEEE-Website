@@ -84,7 +84,7 @@ const Header = () => {
                 <span className="text-xs text-gray-600">Student Branch</span>
               </div>
               </div>
-              <button className="md:hidden mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              <button className="md:hidden mobile-menu-btn" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={isMenuOpen}>
                 {isMenuOpen ? <CloseIcon className="h-6 w-6"/> : <MenuIcon className="h-6 w-6"/>}
               </button>
             </div>

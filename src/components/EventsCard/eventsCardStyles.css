@@ -278,6 +278,23 @@
     margin-bottom: 2rem;
 }
 
+.enhanced-university-links-animated {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.enhanced-university-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    transition: color 0.2s ease;
+}
+
+.enhanced-university-link:hover {
+    color: #ffffff;
+}
+
 .enhanced-session-title-animated {
     font-size: 1.5rem;
     font-weight: 600;
@@ -372,17 +389,18 @@
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(4px);
-    transition: all 0.2s ease;
+    transition: background 0.2s ease, transform 0.2s ease;
     cursor: pointer;
     z-index: 10;
-    outline: none;
 }
 
-.enhanced-nav-button-animated:hover,
-.enhanced-nav-button-animated:focus {
+.enhanced-nav-button-animated:hover {
     background: rgba(255, 255, 255, 0.3);
     transform: translateY(-50%) scale(1.05);
-    outline: none;
+}
+.enhanced-nav-button-animated:focus-visible {
+    outline: 2px solid rgba(255, 255, 255, 0.8);
+    outline-offset: 2px;
 }
 
 .enhanced-nav-button-left-animated {

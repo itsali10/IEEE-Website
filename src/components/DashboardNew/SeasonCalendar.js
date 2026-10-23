@@ -11,6 +11,17 @@ const SeasonCalendar = () => {
   const [refreshTrigger, setRefreshTrigger] = useState(0); // Add refresh trigger
   const [selectedDate, setSelectedDate] = useState(null); // Selected date for modal
 
+  // Close modal on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && selectedDate) {
+        setSelectedDate(null);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [selectedDate]);
+
   // Season: from start of current academic year (Sept 1) until end of the year
   const { seasonStart, seasonEnd, calendarMonths } = useMemo(() => {
     const now = new Date();
@@ -364,10 +375,11 @@ const SeasonCalendar = () => {
                       className="season-calendar-nav-button"
                       onClick={handlePrev}
                       disabled={!canGoPrev}
+                      aria-label="Previous month"
                     >
                       ‹
                     </button>
-                    <div className="season-calendar-month-header">
+                    <div className="season-calendar-month-header" aria-live="polite" aria-atomic="true">
                       {monthLabel}
                     </div>
                     <button
@@ -375,6 +387,7 @@ const SeasonCalendar = () => {
                       className="season-calendar-nav-button"
                       onClick={handleNext}
                       disabled={!canGoNext}
+                      aria-label="Next month"
                     >
                       ›
                     </button>
@@ -462,10 +475,14 @@ const SeasonCalendar = () => {
         <div
           className="season-calendar-modal-overlay"
           onClick={() => setSelectedDate(null)}
+          role="presentation"
         >
           <div
             className="season-calendar-modal-content"
             onClick={(e) => e.stopPropagation()}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Events for ${formatDateDisplay(selectedDate)}`}
           >
             <div className="season-calendar-modal-header">
               <h2>
@@ -474,6 +491,7 @@ const SeasonCalendar = () => {
               <button
                 className="season-calendar-modal-close"
                 onClick={() => setSelectedDate(null)}
+                aria-label="Close"
               >
                 ×
               </button>

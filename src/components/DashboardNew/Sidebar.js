@@ -103,7 +103,7 @@ const Sidebar = ({ currentPage, onPageChange, onLogout, canAccessTaskSystem, can
     },
     role: {
       fontSize: '0.85rem',
-      color: '#6b7280',
+      color: '#4b5563',
       marginTop: '0.25rem',
     },
     nav: {
@@ -152,13 +152,15 @@ const Sidebar = ({ currentPage, onPageChange, onLogout, canAccessTaskSystem, can
 
   const handleMouseEnter = (e, isActive) => {
     if (!isActive) {
-      e.currentTarget.style.background = '#f3f4f6';
+      e.currentTarget.style.background = 'rgba(0, 98, 155, 0.08)';
+      e.currentTarget.style.color = '#00629b';
     }
   };
 
   const handleMouseLeave = (e, isActive) => {
     if (!isActive) {
       e.currentTarget.style.background = 'transparent';
+      e.currentTarget.style.color = '#374151';
     }
   };
 

@@ -466,7 +466,7 @@ const TaskAssignment = ({ isBoa = false }) => {
     characterCount: {
       textAlign: 'right',
       fontSize: '0.875rem',
-      color: '#6b7280',
+      color: '#4b5563',
       marginTop: '0.25rem',
     },
   };
@@ -631,7 +631,7 @@ const TaskAssignment = ({ isBoa = false }) => {
                 ) : membersError ? (
                   <div style={styles.error}>{membersError}</div>
                 ) : filteredMembers.length === 0 ? (
-                  <div style={{ color: '#6b7280' }}>
+                  <div style={{ color: '#4b5563' }}>
                     {(profile?.role || '').toString().trim().toLowerCase() === 'officer' 
                       ? 'No officers or board members found.' 
                       : 'No members found in your committee.'}
@@ -657,7 +657,7 @@ const TaskAssignment = ({ isBoa = false }) => {
                             {capitalizeText(m.name)}
                           </span>
                           {m.studentId && (
-                            <span style={{ fontSize: '0.75rem', color: '#6b7280', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                            <span style={{ fontSize: '0.75rem', color: '#4b5563', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                               ID: {m.studentId}
                             </span>
                           )}

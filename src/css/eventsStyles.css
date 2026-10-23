@@ -45,7 +45,7 @@
 }
 
 .events-search-input::placeholder {
-    color: #999;
+    color: #6b7280;
 }
 
 .events-year-filter {
@@ -62,13 +62,12 @@
     background: none;
     color: #00629b;
     border: none;
-    border-radius: 0;
-    padding: 0.2rem 0.7rem;
-    font-size: 2.1rem;
+    border-radius: var(--radius-md);
+    padding: 0.4rem 1rem;
+    font-size: 1.125rem;
     font-weight: 700;
     cursor: pointer;
-    transition: color 0.18s ease, text-decoration-color 0.18s ease, background-color 0.18s ease;
-    outline: none;
+    transition: color 0.18s ease, background-color 0.18s ease;
     text-decoration: none;
     box-shadow: none;
     margin: 0 0.2rem;
@@ -89,8 +88,7 @@
     background-color: transparent;
 }
 
-.events-year-btn:focus {
-    outline: none;
+.events-year-btn:focus:not(:focus-visible) {
     color: inherit;
     background-color: transparent;
 }
@@ -109,12 +107,8 @@
     background-color: transparent;
 }
 
-/* Stronger override to defeat generic button focus rule below */
-.events-year-filter .events-year-btn:focus,
-.events-year-filter .events-year-btn:focus-visible,
+/* Keep active styling consistent on click */
 .events-year-filter .events-year-btn:active {
-    outline: none !important;
-    box-shadow: none !important;
     background-color: transparent !important;
 }
 
@@ -131,7 +125,7 @@
 
 .events-type-btn {
     background: none;
-    color: #666;
+    color: #4b5563;
     border: none;
     border-radius: 0;
     padding: 0.4rem 1.2rem;
@@ -206,6 +200,40 @@
 .events-thank-you a:hover {
     color: #1976d2;
     text-decoration: underline;
+}
+
+/* Back to Top Button */
+.events-back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: #00629b;
+    color: white;
+    border: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 98, 155, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    z-index: 500;
+    line-height: 1;
+}
+
+.events-back-to-top:hover {
+    background: #004d7a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 98, 155, 0.45);
+}
+
+.events-back-to-top:focus-visible {
+    outline: 2px solid #00629b;
+    outline-offset: 3px;
 }
 
 .events-cards-container{
@@ -878,10 +906,10 @@ button:focus-visible {
 
 .enhanced-event-card {
     overflow: hidden;
-    transition: all 1s ease;
+    transition: opacity 0.4s ease, transform 0.4s ease;
     transform: translateZ(0);
     opacity: 0;
-    transform: translateY(5rem);
+    transform: translateY(3rem);
     border-radius: 1rem;
     background: linear-gradient(135deg, #00629b 0%, #005a8a 50%, #004d7a 100%);
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);

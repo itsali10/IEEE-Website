@@ -149,7 +149,7 @@
 }
 
 .get-in-touch .form-description {
-  color: #6b7280;
+  color: #4b5563;
   font-size: 1.125rem;
   margin: 0;
 }
@@ -197,6 +197,12 @@
   border-color: #00629b;
   background: white;
   box-shadow: 0 0 0 3px rgba(0, 98, 155, 0.1);
+}
+
+.get-in-touch .form-input:focus-visible,
+.get-in-touch .form-textarea:focus-visible {
+  outline: 2px solid #00629b;
+  outline-offset: 1px;
 }
 
 .get-in-touch .form-textarea {

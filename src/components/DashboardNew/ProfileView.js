@@ -36,7 +36,7 @@ const ProfileView = () => {
     label: {
       fontSize: '0.875rem',
       fontWeight: '600',
-      color: '#6b7280',
+      color: '#4b5563',
       marginBottom: '0.5rem',
     },
     value: {
@@ -45,7 +45,7 @@ const ProfileView = () => {
     },
     loadingText: {
       fontSize: '1.125rem',
-      color: '#6b7280',
+      color: '#4b5563',
     },
   };
 

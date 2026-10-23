@@ -450,7 +450,7 @@ const Signup = () => {
 
                 {signupError && (
                     <div style={{
-                        background: '#fee',
+                        background: '#fff0f0',
                         border: '1px solid #fcc',
                         borderRadius: '8px',
                         padding: '16px',
@@ -459,7 +459,7 @@ const Signup = () => {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '12px',
-                        color: '#c33'
+                        color: '#b91c1c'
                     }}>
                         <span style={{ fontSize: '1.25rem' }}>⚠️</span>
                         <span>{signupError}</span>
@@ -467,6 +467,11 @@ const Signup = () => {
                 )}
 
                 <form className="joinus-form" onSubmit={handleSubmit}>
+                    {/* Section header: Account Information */}
+                    <div className="signup-section-header">
+                        <span className="signup-step-badge">1</span>
+                        <span className="signup-step-label">Account Information</span>
+                    </div>
                     {/* Account Information */}
                     <div className="form-row">
                         <div className="form-group">
@@ -539,6 +544,11 @@ const Signup = () => {
                         </div>
                     </div>
 
+                    {/* Section header: Personal Information */}
+                    <div className="signup-section-header">
+                        <span className="signup-step-badge">2</span>
+                        <span className="signup-step-label">Personal Information</span>
+                    </div>
                     {/* Personal Information */}
                     <div className="form-row">
                         <div className="form-group">
@@ -591,8 +601,8 @@ const Signup = () => {
                             {errors.dob && <span className="form-error">{errors.dob}</span>}
                         </div>
                         <div className="form-group gender-group">
-                            <label>Gender</label>
-                            <div className="radio-buttons">
+                            <label id="gender-label">Gender</label>
+                            <div className="radio-buttons" role="group" aria-labelledby="gender-label">
                                 <button 
                                     type="button" 
                                     className={`radio-btn ${formData.gender === 'Male' ? 'active' : ''}`}
@@ -620,6 +630,11 @@ const Signup = () => {
                         </div>
                     </div>
 
+                    {/* Section header: Academic Information */}
+                    <div className="signup-section-header">
+                        <span className="signup-step-badge">3</span>
+                        <span className="signup-step-label">Academic &amp; Committee</span>
+                    </div>
                     {/* Academic Information */}
                     <div className="form-row">
                         <div className="form-group">
@@ -701,8 +716,8 @@ const Signup = () => {
                     {/* IEEE Membership */}
                     <div className="form-row">
                         <div className="form-group ieee-membership-group">
-                            <label>Do you have an active IEEE membership?</label>
-                            <div className="radio-buttons">
+                            <label id="ieee-membership-label">Do you have an active IEEE membership?</label>
+                            <div className="radio-buttons" role="group" aria-labelledby="ieee-membership-label">
                                 <button 
                                     type="button" 
                                     className={`radio-btn ${formData.hasIEEEMembership === 'yes' ? 'active' : ''}`}
@@ -746,9 +761,9 @@ const Signup = () => {
                                     {errors.ieeeMembershipId && <span className="form-error">{errors.ieeeMembershipId}</span>}
                                 </>
                             ) : (
-                                <div style={{ visibility: 'hidden' }}>
+                                <div style={{ visibility: 'hidden' }} aria-hidden="true">
                                     <label>IEEE Membership ID</label>
-                                    <input type="text" disabled />
+                                    <input type="text" disabled tabIndex="-1" />
                                 </div>
                             )}
                         </div>
